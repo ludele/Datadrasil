@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xQ8TBjezTlrVG9p6f+KnQO6oh4mJbc7Ij30b0XkMSdNQCixnF+TRgYhW4xRwN0YeuMF+RTEbiTCgAI4QXojZqw==",
+  "dgSpecHash": "OstZmuuFi0agmQPCVccATuqya+SomVrNIjLts0QJFnb8nx/VH71DiEOVw/d1A+E1GNd7mYIH3SSeKecScCo0NA==",
   "success": true,
   "projectFilePath": "C:\\Users\\ludvig.johansson1\\source\\repos\\Datadrasil\\Datadrasil\\Datadrasil.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ludvig.johansson1\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\ludvig.johansson1\\.nuget\\packages\\yamldotnet\\13.5.2\\yamldotnet.13.5.2.nupkg.sha512"
+  ],
   "logs": []
 }

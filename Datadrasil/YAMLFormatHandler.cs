@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
+using YamlDotNet.Serialization;
 
 namespace Datadrasil
 {
@@ -12,10 +15,15 @@ namespace Datadrasil
 		///	YAML data reading logic that returns a list of objects.
 		/// </summary>
 		/// <param name="filepath"></param>
-		/// <returns>list of objects parsed from the json data<returns>
+		/// <returns>List of objects parsed from the YAML data<returns>
 		public List<object> ReadData(string filePath)
 		{
-			return new List<object>();
+			string yamlContent = File.ReadAllText(filePath);
+
+			var deserializer = new DeserializerBuilder().Build();
+			List<object> parsedData = deserializer.Deserialize<List<object>>(new StringReader(yamlContent));
+
+			return parsedData ?? new List<object>();
 		}
 		/// <summary>
 		/// Writes YAML data to a new file. 
@@ -26,6 +34,10 @@ namespace Datadrasil
 		/// <param name="data"></param>
 		public void WriteData(string filePath, List<object> data)
 		{
+			var serializer = new SerializerBuilder().Build();
+			string yamlData = serializer.Serialize(data);
+
+			File.WriteAllText(filePath, yamlData);
 		}
 	}
 }

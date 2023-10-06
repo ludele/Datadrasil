@@ -12,3 +12,7 @@ C:\Users\ludvig.johansson1\source\repos\Datadrasil\Datadrasil\obj\Debug\net6.0\r
 C:\Users\ludvig.johansson1\source\repos\Datadrasil\Datadrasil\obj\Debug\net6.0\Datadrasil.pdb
 C:\Users\ludvig.johansson1\source\repos\Datadrasil\Datadrasil\obj\Debug\net6.0\Datadrasil.genruntimeconfig.cache
 C:\Users\ludvig.johansson1\source\repos\Datadrasil\Datadrasil\obj\Debug\net6.0\ref\Datadrasil.dll
+C:\Users\ludvig.johansson1\source\repos\Datadrasil\Datadrasil\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\ludvig.johansson1\source\repos\Datadrasil\Datadrasil\bin\Debug\net6.0\YamlDotNet.dll
+C:\Users\ludvig.johansson1\source\repos\Datadrasil\Datadrasil\obj\Debug\net6.0\Datadrasil.csproj.AssemblyReference.cache
+C:\Users\ludvig.johansson1\source\repos\Datadrasil\Datadrasil\obj\Debug\net6.0\Datadrasil.csproj.CopyComplete

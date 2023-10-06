@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace Datadrasil
 {
@@ -18,7 +19,12 @@ namespace Datadrasil
 		/// <returns>list of objects parsed from the json data<returns>
 		public List<object> ReadData(string filePath)
 		{
-			return new List<object>();
+			string jsonContent = File.ReadAllText(filePath);
+
+			var parsedData = JsonConvert.DeserializeObject<List<object>>(jsonContent);
+
+			return parsedData ?? new List<object>();
+
 		}
 		/// <summary>
 		/// Writes JSON data to a new file. 
@@ -29,6 +35,9 @@ namespace Datadrasil
 		/// <param name="data"></param>
 		public void WriteData(string filePath, List<object> data)
 		{
+			string jsonData = JsonConvert.SerializeObject(data);
+
+			File.WriteAllText(filePath, jsonData);
 		}
 	}
 }
