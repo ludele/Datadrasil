@@ -1,40 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Datadrasil
 {
+	// Testing class
+	[XmlInclude(typeof(Person))]
+	public class Person
+	{
+		public string Name { get; set; }
+		public int Age { get; set; }
+	}
+
 	internal static class Program
 	{
 		public static void Main(string[] args)
 		{
-			// Sample data to serialize
-			List<object> dataToSerialize = new List<object>
+
+			var dataToSerialize = new List<object>
 			{
-				new { Name = "John", Age = 30 },
-				new { Name = "Alice", Age = 25 }
+				new Person { Name = "John", Age = 30 },
+				new Person { Name = "Alice", Age = 25 }
 			};
 
-			// File path
 			string jsonFilePath = "data.json";
+			string xmlFilePath = "data.xml";
+			string yamlFilePath = "data.yaml";
 
-			// Create JSON format handler
-			IFormatHandler jsonFormatHandler = new JSONFormatHandler();
+			IFormatHandler json = new JSONFormatHandler();
+			IFormatHandler xml = new XMLFormatHandler();
+			IFormatHandler yaml = new YAMLFormatHandler();
 
 			// Serialize to JSON
-			jsonFormatHandler.WriteData(jsonFilePath, dataToSerialize);
+			json.WriteData(jsonFilePath, dataToSerialize);
 
-			// Deserialize from JSON
-			List<object> jsonDeserializedData = jsonFormatHandler.ReadData(jsonFilePath);
+			// Serialize to XML
+			xml.WriteData(xmlFilePath, dataToSerialize);
 
-			// Display the result
-			Console.WriteLine("JSON Deserialized Data:");
-			foreach (var item in jsonDeserializedData)
+			// Serialize to YAML
+			yaml.WriteData(yamlFilePath, dataToSerialize);
+
+			// Read and Display Deserialized Data
+			DisplayDeserializedData("JSON", json, jsonFilePath);
+			DisplayDeserializedData("XML", xml, xmlFilePath);
+			DisplayDeserializedData("YAML", yaml, yamlFilePath);
+		}
+
+		private static void DisplayDeserializedData(string format, IFormatHandler formatHandler, string filePath)
+		{
+			List<object> deserializedData = formatHandler.ReadData(filePath);
+
+			Console.WriteLine($"Deserialized {format} Data:");
+			foreach (var item in deserializedData)
 			{
 				Console.WriteLine(item);
 			}
+
+			Console.WriteLine(); // Add a line break for clarity
 		}
 	}
 }

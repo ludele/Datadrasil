@@ -21,9 +21,14 @@ namespace Datadrasil
 			string yamlContent = File.ReadAllText(filePath);
 
 			var deserializer = new DeserializerBuilder().Build();
-			List<object> parsedData = deserializer.Deserialize<List<object>>(new StringReader(yamlContent));
+			object parsedData = deserializer.Deserialize(new StringReader(yamlContent));
 
-			return parsedData ?? new List<object>();
+			if (parsedData is IEnumerable<object> enumerableData)
+			{
+				return enumerableData.ToList();
+			}
+
+			return new List<object> { parsedData };
 		}
 		/// <summary>
 		/// Writes YAML data to a new file. 
