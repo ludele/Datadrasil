@@ -12,7 +12,6 @@ namespace Datadrasil
 		{
 			if (!File.Exists(filePath))
 			{
-				// Handle the case where the file doesn't exist
 				return new List<object>();
 			}
 			try
@@ -21,7 +20,6 @@ namespace Datadrasil
 				{
 					var document = XDocument.Load(stream);
 
-					// Convert the XDocument to a List<object>
 					return new List<object> { document };
 				}
 			}
@@ -36,7 +34,6 @@ namespace Datadrasil
 		{
 			if (data == null || data.Count == 0)
 			{
-				// Handle empty data or avoid unnecessary serialization
 				return;
 			}
 

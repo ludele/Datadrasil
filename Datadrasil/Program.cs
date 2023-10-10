@@ -39,22 +39,17 @@ namespace Datadrasil
 			string xmlFilePath = "data.xml";
 			string yamlFilePath = "data.yaml";
 
-			// Serialize to JSON
 			fh.WriteData(jsonFilePath, dataToSerialize);
 
-			// Serialize to XML
 			fh.WriteData(xmlFilePath, dataToSerialize);
 
-			// Serialize to YAML
 			fh.WriteData(yamlFilePath, dataToSerialize);
 
-			// Read and Display Deserialized Data
 			DisplayDeserializedData("JSON", jsonFilePath);
 			DisplayDeserializedData("XML", xmlFilePath);
 			DisplayDeserializedData("YAML", yamlFilePath);
 		}
 
-		// Working function to display random deserialized data
 		private static void DisplayDeserializedData(string format, string filePath)
 		{
 			List<object> deserializedData = fh.ReadData(filePath);
@@ -85,7 +80,7 @@ namespace Datadrasil
 				}
 			}
 
-			Console.WriteLine(); // Add a line break for clarity
+			Console.WriteLine(); 
 		}
 
 	}
