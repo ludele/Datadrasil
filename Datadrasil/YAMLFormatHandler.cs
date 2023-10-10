@@ -18,17 +18,21 @@ namespace Datadrasil
 		/// <returns>List of objects parsed from the YAML data<returns>
 		public List<object> ReadData(string filePath)
 		{
-			string yamlContent = File.ReadAllText(filePath);
-
-			var deserializer = new DeserializerBuilder().Build();
-			object parsedData = deserializer.Deserialize(new StringReader(yamlContent));
-
-			if (parsedData is IEnumerable<object> enumerableData)
+			try
 			{
-				return enumerableData.ToList();
-			}
+				using (var stream = new FileStream(filePath, FileMode.Open))
+				{
+					var deserializer = new Deserializer();
+					var yamlObject = deserializer.Deserialize<dynamic>(new StreamReader(stream));
 
-			return new List<object> { parsedData };
+					// Convert the dynamic object to a List<object>
+					return new List<object> { yamlObject };
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new InvalidOperationException("Error occurred during YAML deserialization.", ex);
+			}
 		}
 		/// <summary>
 		/// Writes YAML data to a new file. 

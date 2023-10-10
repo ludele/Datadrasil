@@ -10,6 +10,15 @@ namespace Datadrasil
 	{
 		public string Name { get; set; }
 		public int Age { get; set; }
+
+	}
+
+	[XmlInclude(typeof(Test))]
+	public class Test 
+	{
+		public string Name { get; set; }
+		public int Value { get; set; }
+
 	}
 
 	public class Program
@@ -18,10 +27,12 @@ namespace Datadrasil
 		public static void Main(string[] args)
 		{
 
-			var dataToSerialize = new List<object>
+			List<object> dataToSerialize = new List<object>
 			{
 				new Person { Name = "John", Age = 30 },
-				new Person { Name = "Alice", Age = 25 }
+				new Person { Name = "Alice", Age = 25 },
+				new Person { Name = "Rolf", Age = 413 },
+				new Test {Name = "Banana", Value = 200 }
 			};
 
 			string jsonFilePath = "data.json";
@@ -43,6 +54,7 @@ namespace Datadrasil
 			DisplayDeserializedData("YAML", yamlFilePath);
 		}
 
+		// Working function to display random deserialized data
 		private static void DisplayDeserializedData(string format, string filePath)
 		{
 			List<object> deserializedData = fh.ReadData(filePath);
@@ -50,10 +62,31 @@ namespace Datadrasil
 			Console.WriteLine($"Deserialized {format} Data:");
 			foreach (var item in deserializedData)
 			{
-				Console.WriteLine(item);
+				if (item is List<object> list)
+				{
+					foreach (var listItem in list)
+					{
+						if (listItem is Dictionary<object, object> dictionary)
+						{
+							foreach (var entry in dictionary)
+							{
+								Console.WriteLine($"{entry.Key}: {entry.Value}");
+							}
+						}
+						else
+						{
+							Console.WriteLine(listItem);
+						}
+					}
+				}
+				else
+				{
+					Console.WriteLine(item);
+				}
 			}
 
 			Console.WriteLine(); // Add a line break for clarity
 		}
+
 	}
 }

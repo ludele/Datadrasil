@@ -8,6 +8,9 @@ namespace Datadrasil
 {
 	public class FormatHandlerManager
 	{
+		/// <summary>
+		/// Dictionary of file path and format handlers.
+		/// </summary>
 		private readonly Dictionary<string, IFormatHandler> formatHandlers;
 
 		/// <summary>

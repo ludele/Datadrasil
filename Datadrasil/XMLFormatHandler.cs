@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace Datadrasil
@@ -13,22 +15,21 @@ namespace Datadrasil
 				// Handle the case where the file doesn't exist
 				return new List<object>();
 			}
-
-			using (var reader = new StreamReader(filePath))
+			try
 			{
-				var serializer = new XmlSerializer(typeof(List<object>));
+				using (var stream = new FileStream(filePath, FileMode.Open))
+				{
+					var document = XDocument.Load(stream);
 
-				try
-				{
-					var parsedData = (List<object>)serializer.Deserialize(reader);
-					return parsedData ?? new List<object>();
-				}
-				catch (InvalidOperationException)
-				{
-					// Handle the case where deserialization fails
-					return new List<object>();
+					// Convert the XDocument to a List<object>
+					return new List<object> { document };
 				}
 			}
+			catch (Exception ex)
+			{
+				throw new ("Error occurred during XML deserialization.", ex);
+			}
+
 		}
 
 		public void WriteData(string filePath, List<object> data)

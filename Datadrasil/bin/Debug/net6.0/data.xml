@@ -8,4 +8,12 @@
     <Name>Alice</Name>
     <Age>25</Age>
   </anyType>
+  <anyType xsi:type="Person">
+    <Name>Rolf</Name>
+    <Age>413</Age>
+  </anyType>
+  <anyType xsi:type="Test">
+    <Name>Banana</Name>
+    <Value>200</Value>
+  </anyType>
 </ArrayOfAnyType>
