@@ -12,8 +12,9 @@ namespace Datadrasil
 		public int Age { get; set; }
 	}
 
-	internal static class Program
+	public class Program
 	{
+		public static FormatHandlerManager fh = new FormatHandlerManager();
 		public static void Main(string[] args)
 		{
 
@@ -27,28 +28,24 @@ namespace Datadrasil
 			string xmlFilePath = "data.xml";
 			string yamlFilePath = "data.yaml";
 
-			IFormatHandler json = new JSONFormatHandler();
-			IFormatHandler xml = new XMLFormatHandler();
-			IFormatHandler yaml = new YAMLFormatHandler();
-
 			// Serialize to JSON
-			json.WriteData(jsonFilePath, dataToSerialize);
+			fh.WriteData(jsonFilePath, dataToSerialize);
 
 			// Serialize to XML
-			xml.WriteData(xmlFilePath, dataToSerialize);
+			fh.WriteData(xmlFilePath, dataToSerialize);
 
 			// Serialize to YAML
-			yaml.WriteData(yamlFilePath, dataToSerialize);
+			fh.WriteData(yamlFilePath, dataToSerialize);
 
 			// Read and Display Deserialized Data
-			DisplayDeserializedData("JSON", json, jsonFilePath);
-			DisplayDeserializedData("XML", xml, xmlFilePath);
-			DisplayDeserializedData("YAML", yaml, yamlFilePath);
+			DisplayDeserializedData("JSON", jsonFilePath);
+			DisplayDeserializedData("XML", xmlFilePath);
+			DisplayDeserializedData("YAML", yamlFilePath);
 		}
 
-		private static void DisplayDeserializedData(string format, IFormatHandler formatHandler, string filePath)
+		private static void DisplayDeserializedData(string format, string filePath)
 		{
-			List<object> deserializedData = formatHandler.ReadData(filePath);
+			List<object> deserializedData = fh.ReadData(filePath);
 
 			Console.WriteLine($"Deserialized {format} Data:");
 			foreach (var item in deserializedData)
