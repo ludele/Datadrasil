@@ -15,7 +15,7 @@ namespace Datadrasil
 		/// <summary>
 		///	YAML data reading logic that returns a list of objects.
 		/// </summary>
-		/// <param name="filepath"></param>
+		/// <param name="filepath">File to be serialized</param>
 		/// <returns>List of objects parsed from the YAML data<returns>
 		public List<object> ReadData(string filePath)
 		{

@@ -1,38 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Xml.Serialization;
 using Datadrasil.FormatHandlers;
 
 namespace Datadrasil
 {
     // Testing class
-    [XmlInclude(typeof(Person))]
 	public class Person
 	{
-		public string Name { get; set; }
+		public string? Name { get; set; }
 		public int Age { get; set; }
-
+		public string? Personality { get; set; }
 	}
 
-	[XmlInclude(typeof(Test))]
 	public class Test 
 	{
 		public string Name { get; set; }
 		public int Value { get; set; }
-
 	}
 
 	public class Program
 	{
 		public static FormatHandlerManager fh = new FormatHandlerManager();
-		public static void Main(string[] args)
+		public static void Main(string[] args) 
 		{
-
-			List<object> dataToSerialize = new List<object>
+			List<object> dataToSerialize = new List<object> 
 			{
-				new Person { Name = "John", Age = 30 },
+				new Person { Name = null, Age = 30 },
+				new Person { Name = "Alice", Age = 25 },
+				new Person { Name = "Sigge", Age = 432, Personality = "Snarky" },
+				new Person { Name = "Alice", Age = 25 },
+				new Person { Name = "Alice", Age = 25 },
+				new Person { Name = "Alice", Age = 25 },
 				new Person { Name = "Alice", Age = 25 },
 				new Person { Name = "Rolf", Age = 413 },
+				new Test {Name = "Banana", Value = 200 },
+				new Test {Name = "Rat", Value = 1337 },
 				new Test {Name = "Banana", Value = 200 }
 			};
 
@@ -47,6 +51,8 @@ namespace Datadrasil
 			DisplayDeserializedData("JSON", jsonFilePath);
 			DisplayDeserializedData("XML", xmlFilePath);
 			DisplayDeserializedData("YAML", yamlFilePath);
+
+			Console.ReadLine();
 		}
 
 		private static void DisplayDeserializedData(string format, string filePath)
@@ -78,9 +84,7 @@ namespace Datadrasil
 					Console.WriteLine(item);
 				}
 			}
-
 			Console.WriteLine(); 
 		}
-
 	}
 }

@@ -15,7 +15,7 @@ namespace Datadrasil.FormatHandlers
         /// <summary>
         ///	json data reading logic that returns a list of objects.
         /// </summary>
-        /// <param name="filepath"></param>
+        /// <param name="filepath">File to be serialized</param>
         /// <returns>list of objects parsed from the json data<returns>
         public List<object> ReadData(string filePath)
         {
@@ -26,6 +26,7 @@ namespace Datadrasil.FormatHandlers
             return parsedData ?? new List<object>();
 
         }
+
         /// <summary>
         /// Writes JSON data to a new file. 
         /// To be used for the final sorted output,

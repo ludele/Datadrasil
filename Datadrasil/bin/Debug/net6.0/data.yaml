@@ -1,8 +1,30 @@
-- Name: John
+- Name: 
   Age: 30
+  Personality: 
 - Name: Alice
   Age: 25
+  Personality: 
+- Name: Sigge
+  Age: 432
+  Personality: Snarky
+- Name: Alice
+  Age: 25
+  Personality: 
+- Name: Alice
+  Age: 25
+  Personality: 
+- Name: Alice
+  Age: 25
+  Personality: 
+- Name: Alice
+  Age: 25
+  Personality: 
 - Name: Rolf
   Age: 413
+  Personality: 
+- Name: Banana
+  Value: 200
+- Name: Rat
+  Value: 1337
 - Name: Banana
   Value: 200
