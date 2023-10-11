@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Datadrasil.FormatHandlers;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
@@ -6,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Datadrasil
 {
-	public class XMLFormatHandler : IFormatHandler
+    public class XMLFormatHandler : IFormatHandler
 	{
 		public List<object> ReadData(string filePath)
 		{
@@ -19,7 +20,6 @@ namespace Datadrasil
 				using (var stream = new FileStream(filePath, FileMode.Open))
 				{
 					var document = XDocument.Load(stream);
-
 					return new List<object> { document };
 				}
 			}

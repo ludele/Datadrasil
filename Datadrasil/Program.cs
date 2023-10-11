@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Datadrasil.FormatHandlers;
 
 namespace Datadrasil
 {
-	// Testing class
-	[XmlInclude(typeof(Person))]
+    // Testing class
+    [XmlInclude(typeof(Person))]
 	public class Person
 	{
 		public string Name { get; set; }
@@ -40,9 +41,7 @@ namespace Datadrasil
 			string yamlFilePath = "data.yaml";
 
 			fh.WriteData(jsonFilePath, dataToSerialize);
-
 			fh.WriteData(xmlFilePath, dataToSerialize);
-
 			fh.WriteData(yamlFilePath, dataToSerialize);
 
 			DisplayDeserializedData("JSON", jsonFilePath);

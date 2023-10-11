@@ -5,11 +5,12 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Datadrasil.FormatHandlers;
 using YamlDotNet.Serialization;
 
 namespace Datadrasil
 {
-	internal class YAMLFormatHandler : IFormatHandler
+    internal class YAMLFormatHandler : IFormatHandler
 	{
 		/// <summary>
 		///	YAML data reading logic that returns a list of objects.
