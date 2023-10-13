@@ -36,13 +36,13 @@ namespace Datadrasil
 		/// <param name="filePath">The path of the file to read.</param>
 		/// <returns>A list of objects representing the data read by the format handler.</returns>
 		/// <exception cref="NotSupportedException">Thrown if the file format is not supported.</exception>
-		public List<object> ReadData(string filePath)
+		public List<DataRepresentation> ReadData(string filePath)
 		{
 			string fileExtension = Path.GetExtension(filePath);
 
 			if (formatHandlers.TryGetValue(fileExtension, out var handler))
 			{
-				return handler.ReadData(filePath);
+				return handler.ReadData(filePath); 
 			}
 			else
 			{
@@ -56,7 +56,7 @@ namespace Datadrasil
 		/// <param name="filePath">The path of the file to write the data to.</param>
 		/// <param name="data">The list of objects representing the data to be written.</param>
 		/// <exception cref="NotSupportedException">Thrown if the file format is not supported.</exception>
-		public void WriteData(string filePath, List<object> data)
+		public void WriteData(string filePath, List<DataRepresentation> data)
 		{
 			string fileExtension = Path.GetExtension(filePath);
 
@@ -69,6 +69,5 @@ namespace Datadrasil
 				throw new NotSupportedException($"File format {fileExtension} is not supported.");
 			}
 		}
-
 	}
 }

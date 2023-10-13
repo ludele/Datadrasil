@@ -6,85 +6,107 @@ using Datadrasil.FormatHandlers;
 
 namespace Datadrasil
 {
-    // Testing class
-	public class Person
-	{
-		public string? Name { get; set; }
-		public int Age { get; set; }
-		public string? Personality { get; set; }
-	}
-
-	public class Test 
-	{
-		public string Name { get; set; }
-		public int Value { get; set; }
-	}
 
 	public class Program
 	{
 		public static FormatHandlerManager fh = new FormatHandlerManager();
-		public static void Main(string[] args) 
+		public static void Main(string[] args)
 		{
-			List<object> dataToSerialize = new List<object> 
-			{
-				new Person { Name = null, Age = 30 },
-				new Person { Name = "Alice", Age = 25 },
-				new Person { Name = "Sigge", Age = 432, Personality = "Snarky" },
-				new Person { Name = "Alice", Age = 25 },
-				new Person { Name = "Alice", Age = 25 },
-				new Person { Name = "Alice", Age = 25 },
-				new Person { Name = "Alice", Age = 25 },
-				new Person { Name = "Rolf", Age = 413 },
-				new Test {Name = "Banana", Value = 200 },
-				new Test {Name = "Rat", Value = 1337 },
-				new Test {Name = "Banana", Value = 200 }
-			};
+			List<DataRepresentation> dataToSerialize = GetUserData();
 
 			string jsonFilePath = "data.json";
-			string xmlFilePath = "data.xml";
 			string yamlFilePath = "data.yaml";
+			string xmlFilePath = "data.xml";
 
 			fh.WriteData(jsonFilePath, dataToSerialize);
-			fh.WriteData(xmlFilePath, dataToSerialize);
 			fh.WriteData(yamlFilePath, dataToSerialize);
 
 			DisplayDeserializedData("JSON", jsonFilePath);
-			DisplayDeserializedData("XML", xmlFilePath);
 			DisplayDeserializedData("YAML", yamlFilePath);
+			DisplayDeserializedData("XML", xmlFilePath);
 
 			Console.ReadLine();
+		}
+		private static List<DataRepresentation> GetUserData()
+		{
+			List<DataRepresentation> dataToSerialize = new List<DataRepresentation>();
+
+			while (true)
+			{
+				Console.Write("Category Name to serialize (enter 'q' to quit): ");
+				string categoryName = Console.ReadLine();
+
+				if (categoryName == "q")
+				{
+					break;
+				}
+
+				DataRepresentation dataRepresentation = new DataRepresentation();
+
+				DataCategory category = new DataCategory { CategoryName = categoryName };
+
+				while (true)
+				{
+					Console.Write("Item Name to serialize (enter 'q' to go back to categories): ");
+					string itemName = Console.ReadLine();
+
+					if (itemName == "q")
+					{
+						break;
+					}
+
+					DataItem item = new DataItem();
+
+					while (true)
+					{
+						Console.Write("Property Name to serialize (enter 'q' to go back to items): ");
+						string propertyName = Console.ReadLine();
+
+						if (propertyName == "q")
+						{
+							break;
+						}
+
+						Console.Write($"Property Value for {propertyName}: ");
+						string propertyValue = Console.ReadLine();
+
+						item.Properties.Add(propertyName, propertyValue);
+					}
+
+					category.Items.Add(item);
+				}
+
+				dataRepresentation.Categories.Add(category);
+				dataToSerialize.Add(dataRepresentation);
+			}
+
+			return dataToSerialize;
 		}
 
 		private static void DisplayDeserializedData(string format, string filePath)
 		{
-			List<object> deserializedData = fh.ReadData(filePath);
+			List<DataRepresentation> deserializedData = fh.ReadData(filePath);
 
 			Console.WriteLine($"Deserialized {format} Data:");
-			foreach (var item in deserializedData)
+
+			foreach (var dataRepresentation in deserializedData)
 			{
-				if (item is List<object> list)
+				foreach (var category in dataRepresentation.Categories)
 				{
-					foreach (var listItem in list)
+					Console.WriteLine($"Category: {category.CategoryName}");
+
+					foreach (var item in category.Items)
 					{
-						if (listItem is Dictionary<object, object> dictionary)
+						foreach (var property in item.Properties)
 						{
-							foreach (var entry in dictionary)
-							{
-								Console.WriteLine($"{entry.Key}: {entry.Value}");
-							}
-						}
-						else
-						{
-							Console.WriteLine(listItem);
+							Console.WriteLine($"{property.Key}: {property.Value}");
 						}
 					}
 				}
-				else
-				{
-					Console.WriteLine(item);
-				}
 			}
-			Console.WriteLine(); 
+
+			Console.WriteLine();
 		}
 	}
+
 }

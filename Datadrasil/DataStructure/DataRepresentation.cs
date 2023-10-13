@@ -25,9 +25,9 @@ namespace Datadrasil
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DataCategory"/> class
 		/// </summary>
-		public DataRepresentation() 
+		public DataRepresentation()
 		{
-			categories = new List<DataCategory>();	
+			categories = new List<DataCategory>();
 		}
 	}
 }

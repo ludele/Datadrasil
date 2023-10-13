@@ -14,25 +14,24 @@ namespace Datadrasil
 		/// </summary>
 		/// <param name="filePath">File to be serialized</param>
 		/// <returns>list of objects parsed from the XML data</returns>
-		public List<object> ReadData(string filePath)
+		public List<DataRepresentation> ReadData(string filePath)
 		{
 			if (!File.Exists(filePath))
 			{
-				return new List<object>();
+				return new List<DataRepresentation>();
 			}
 			try
 			{
 				using (var stream = new FileStream(filePath, FileMode.Open))
 				{
-					var document = XDocument.Load(stream);
-					return new List<object> { document };
+					var serializer = new XmlSerializer(typeof(List<DataRepresentation>));
+					return (List<DataRepresentation>)serializer.Deserialize(stream);
 				}
 			}
 			catch (Exception ex)
 			{
-				throw new ("Error occurred during XML deserialization.", ex);
+				throw new InvalidOperationException("Error occurred during XML deserialization.", ex);
 			}
-
 		}
 		/// <summary>
 		/// Writes XML data to a new file. 
@@ -41,7 +40,7 @@ namespace Datadrasil
 		/// </summary>
 		/// <param name="filePath">File to be created to written to</param>
 		/// <param name="data">The seralized data</param>
-		public void WriteData(string filePath, List<object> data)
+		public void WriteData(string filePath, List<DataRepresentation> data)
 		{
 			if (data == null || data.Count == 0)
 			{
@@ -50,8 +49,7 @@ namespace Datadrasil
 
 			using (var writer = new StreamWriter(filePath))
 			{
-				var types = data.Select(item => item.GetType()).Distinct().ToArray();
-				var serializer = new XmlSerializer(typeof(List<object>), types);
+				var serializer = new XmlSerializer(typeof(List<DataRepresentation>));
 				serializer.Serialize(writer, data);
 			}
 		}

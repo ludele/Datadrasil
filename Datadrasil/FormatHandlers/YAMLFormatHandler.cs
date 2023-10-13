@@ -17,17 +17,15 @@ namespace Datadrasil
 		/// </summary>
 		/// <param name="filepath">File to be serialized</param>
 		/// <returns>List of objects parsed from the YAML data<returns>
-		public List<object> ReadData(string filePath)
+		public List<DataRepresentation> ReadData(string filePath)
 		{
 			try
 			{
 				using (var stream = new FileStream(filePath, FileMode.Open))
 				{
 					var deserializer = new Deserializer();
-					var yamlObject = deserializer.Deserialize<dynamic>(new StreamReader(stream));
-
-					// Convert the dynamic object to a List<object>
-					return new List<object> { yamlObject };
+					var yamlObject = deserializer.Deserialize<List<DataRepresentation>>(new StreamReader(stream));
+					return yamlObject ?? new List<DataRepresentation>();
 				}
 			}
 			catch (Exception ex)
@@ -42,7 +40,7 @@ namespace Datadrasil
 		/// </summary>
 		/// <param name="filePath"></param>
 		/// <param name="data"></param>
-		public void WriteData(string filePath, List<object> data)
+		public void WriteData(string filePath, List<DataRepresentation> data)
 		{
 			var serializer = new SerializerBuilder().Build();
 			string yamlData = serializer.Serialize(data);

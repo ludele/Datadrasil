@@ -11,7 +11,7 @@ namespace Datadrasil
         /// <summary>
         /// The name of the category
         /// </summary>
-        private string CategoryName { get; set; }
+        public string CategoryName { get; set; }
         /// <summary>
         /// The list of items within the category
         /// </summary>

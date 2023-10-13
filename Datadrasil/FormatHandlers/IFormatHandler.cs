@@ -18,13 +18,12 @@ namespace Datadrasil
 		/// </summary>
 		/// <param name="filePath">File to be seralized</param>
 		/// <returns></returns>
-		List<object> ReadData(string filePath);
-		
+		List<DataRepresentation> ReadData(string filePath);
 		/// <summary>
 		/// Placeholder method to deseralize data
 		/// </summary>
 		/// <param name="filePath">File that deseralized data can be written to</param>
 		/// <param name="data">The data to be deseralized</param>
-		void WriteData(string filePath, List<object> data);
+		void WriteData(string filePath, List<DataRepresentation> data);
 	}
 }

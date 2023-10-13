@@ -17,14 +17,13 @@ namespace Datadrasil.FormatHandlers
         /// </summary>
         /// <param name="filepath">File to be serialized</param>
         /// <returns>list of objects parsed from the json data<returns>
-        public List<object> ReadData(string filePath)
+        public List<DataRepresentation> ReadData(string filePath)
         {
             string jsonContent = File.ReadAllText(filePath);
 
-            var parsedData = JsonConvert.DeserializeObject<List<object>>(jsonContent);
+			var parsedData = JsonConvert.DeserializeObject<List<DataRepresentation>>(jsonContent);
 
-            return parsedData ?? new List<object>();
-
+			return parsedData ?? new List<DataRepresentation>();
         }
 
         /// <summary>
@@ -34,7 +33,7 @@ namespace Datadrasil.FormatHandlers
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="data"></param>
-        public void WriteData(string filePath, List<object> data)
+        public void WriteData(string filePath, List<DataRepresentation> data)
         {
             string jsonData = JsonConvert.SerializeObject(data);
 

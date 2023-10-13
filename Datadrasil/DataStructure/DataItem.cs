@@ -8,6 +8,7 @@ namespace Datadrasil
 {
 	public class DataItem
 	{
+		public string PropertySetName { get; set; }
 		/// <summary>
 		/// A dictionary containing each key name and item value
 		/// </summary>
