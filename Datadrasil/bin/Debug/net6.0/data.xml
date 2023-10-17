@@ -3,24 +3,37 @@
   <DataRepresentation>
     <Categories>
       <DataCategory>
-        <CategoryName>1</CategoryName>
+        <CategoryName>a</CategoryName>
         <Items>
           <DataItem>
-            <PropertySetName>2</PropertySetName>
+            <PropertySetName>b</PropertySetName>
             <Properties>
               <KeyValue>
-                <Key>3</Key>
-                <Value xsi:type="xsd:string">4</Value>
+                <Name>c</Name>
+                <Value xsi:type="xsd:string">d</Value>
               </KeyValue>
               <KeyValue>
-                <Key>5</Key>
-                <Value xsi:type="xsd:string">6</Value>
+                <Name>e</Name>
+                <Value xsi:type="xsd:string">q</Value>
               </KeyValue>
               <KeyValue>
-                <Key>7</Key>
-                <Value xsi:type="xsd:string">8</Value>
+                <Name>e</Name>
+                <Value xsi:type="xsd:string">f</Value>
               </KeyValue>
             </Properties>
+          </DataItem>
+        </Items>
+      </DataCategory>
+    </Categories>
+  </DataRepresentation>
+  <DataRepresentation>
+    <Categories>
+      <DataCategory>
+        <CategoryName>e</CategoryName>
+        <Items>
+          <DataItem>
+            <PropertySetName>f</PropertySetName>
+            <Properties />
           </DataItem>
         </Items>
       </DataCategory>

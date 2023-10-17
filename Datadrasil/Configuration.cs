@@ -70,14 +70,14 @@ namespace Datadrasil
 				if (isNumericKey)
 				{
 					sortedItems = ascendingOrder
-						? category.Items.OrderBy(item => Convert.ToDouble(item.Properties.FirstOrDefault(kvp => kvp.Key == sortingKey)?.Value)).ToList()
-						: category.Items.OrderByDescending(item => Convert.ToDouble(item.Properties.FirstOrDefault(kvp => kvp.Key == sortingKey)?.Value)).ToList();
+						? category.Items.OrderBy(item => Convert.ToDouble(item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value)).ToList()
+						: category.Items.OrderByDescending(item => Convert.ToDouble(item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value)).ToList();
 				}
 				else
 				{
 					sortedItems = ascendingOrder
-						? category.Items.OrderBy(item => item.Properties.FirstOrDefault(kvp => kvp.Key == sortingKey)?.Value?.ToString()).ToList()
-						: category.Items.OrderByDescending(item => item.Properties.FirstOrDefault(kvp => kvp.Key == sortingKey)?.Value?.ToString()).ToList();
+						? category.Items.OrderBy(item => item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value?.ToString()).ToList()
+						: category.Items.OrderByDescending(item => item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value?.ToString()).ToList();
 				}
 
 				category.Items = sortedItems;

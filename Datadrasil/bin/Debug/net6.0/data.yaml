@@ -1,11 +1,16 @@
 - Categories:
-  - CategoryName: 1
+  - CategoryName: a
     Items:
-    - PropertySetName: 2
+    - PropertySetName: b
       Properties:
-      - Key: 3
-        Value: 4
-      - Key: 5
-        Value: 6
-      - Key: 7
-        Value: 8
+      - Name: c
+        Value: d
+      - Name: e
+        Value: q
+      - Name: e
+        Value: f
+- Categories:
+  - CategoryName: e
+    Items:
+    - PropertySetName: f
+      Properties: []

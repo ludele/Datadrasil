@@ -10,7 +10,7 @@ namespace Datadrasil
 
 	public class Testing
 	{
-		public const string tab = "    ";
+		public const string tab = "     ";
 		public static FormatHandlerManager fh = new FormatHandlerManager();
 		public static void Run()
 		{
@@ -74,7 +74,7 @@ namespace Datadrasil
 						Console.Write($"Property Value for {propertyName}: ");
 						string propertyValue = Console.ReadLine();
 
-						item.Properties.Add(new KeyValue { Key = propertyName, Value = propertyValue });
+						item.Properties.Add(new KeyValue { Name = propertyName, Value = propertyValue });
 					}
 
 					category.Items.Add(item);
@@ -98,7 +98,7 @@ namespace Datadrasil
 			{
 				foreach (DataCategory category in dataRepresentation.Categories)
 				{
-					output += $"{category.CategoryName}: \n";
+					output += $"\n{category.CategoryName}: \n";
 
 					foreach (DataItem item in category.Items)
 					{
@@ -106,7 +106,7 @@ namespace Datadrasil
 
 						foreach (KeyValue property in item.Properties)
 						{
-							output += $"{tab}{tab}{property.Key}: {property.Value}\n";
+							output += $"{tab}{tab}{property.Name}: {property.Value}\n";
 						}
 					}
 				}
@@ -114,8 +114,4 @@ namespace Datadrasil
 			Console.WriteLine(output);
 		}
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c92803261cb625717ccbee1ef550c676c9bedeb
 }

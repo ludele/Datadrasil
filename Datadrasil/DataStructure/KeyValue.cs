@@ -8,7 +8,7 @@ namespace Datadrasil
 {
 	public class KeyValue
 	{
-		public string Key { get; set; }
+		public string Name { get; set; }
 		public object Value { get; set; }
 	}
 }

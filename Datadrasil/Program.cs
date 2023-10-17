@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Datadrasil
 {
@@ -10,7 +11,7 @@ namespace Datadrasil
 	{
 		public static void Main()
 		{
-			Testing.Run();
+			Testing.Run();	
 		}
 	}
 }
