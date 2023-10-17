@@ -8,9 +8,5 @@ namespace Datadrasil
 {
 	public class OutputFormatter 
 	{
-<<<<<<< HEAD
-
-=======
->>>>>>> 3c92803261cb625717ccbee1ef550c676c9bedeb
 	}
 }
