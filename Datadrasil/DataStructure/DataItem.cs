@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,11 @@ namespace Datadrasil
 		/// <summary>
 		/// A dictionary containing each key name and item value
 		/// </summary>
-		private Dictionary<string, object> properties = new Dictionary<string, object>();
-
+		private List<KeyValue> properties = new List<KeyValue>();
 		/// <summary>
 		/// Constructor gets/set the dictionary
 		/// </summary>
-		public Dictionary<string, object> Properties
+		public List<KeyValue> Properties
 		{
 			get { return properties; }
 			set { properties = value; }
@@ -28,7 +28,7 @@ namespace Datadrasil
 		/// </summary>
 		public DataItem()
 		{
-			properties = new Dictionary<string, object>();
+			properties = new List<KeyValue>();
 		}
 	}
 }

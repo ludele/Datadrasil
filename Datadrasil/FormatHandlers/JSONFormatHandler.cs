@@ -21,7 +21,7 @@ namespace Datadrasil.FormatHandlers
         {
             string jsonContent = File.ReadAllText(filePath);
 
-			var parsedData = JsonConvert.DeserializeObject<List<DataRepresentation>>(jsonContent);
+            List<DataRepresentation>? parsedData = JsonConvert.DeserializeObject<List<DataRepresentation>>(jsonContent);
 
 			return parsedData ?? new List<DataRepresentation>();
         }

@@ -22,9 +22,9 @@ namespace Datadrasil
 			}
 			try
 			{
-				using (var stream = new FileStream(filePath, FileMode.Open))
+				using (FileStream stream = new FileStream(filePath, FileMode.Open))
 				{
-					var serializer = new XmlSerializer(typeof(List<DataRepresentation>));
+					XmlSerializer serializer = new XmlSerializer(typeof(List<DataRepresentation>));
 					return (List<DataRepresentation>)serializer.Deserialize(stream);
 				}
 			}
@@ -49,7 +49,7 @@ namespace Datadrasil
 
 			using (var writer = new StreamWriter(filePath))
 			{
-				var serializer = new XmlSerializer(typeof(List<DataRepresentation>));
+				XmlSerializer serializer = new XmlSerializer(typeof(List<DataRepresentation>));
 				serializer.Serialize(writer, data);
 			}
 		}

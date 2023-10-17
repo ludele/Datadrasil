@@ -8,9 +8,5 @@ namespace Datadrasil
 {
 	public class OutputFormatter 
 	{
-		public Configuration CreateConfiguration()
-		{
-			return new Configuration();
-		}
 	}
 }
