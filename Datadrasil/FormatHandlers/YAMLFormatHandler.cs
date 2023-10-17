@@ -21,10 +21,10 @@ namespace Datadrasil
 		{
 			try
 			{
-				using (var stream = new FileStream(filePath, FileMode.Open))
+				using (FileStream stream = new FileStream(filePath, FileMode.Open))
 				{
-					var deserializer = new Deserializer();
-					var yamlObject = deserializer.Deserialize<List<DataRepresentation>>(new StreamReader(stream));
+					Deserializer deserializer = new Deserializer();
+					List<DataRepresentation> yamlObject = deserializer.Deserialize<List<DataRepresentation>>(new StreamReader(stream));
 					return yamlObject ?? new List<DataRepresentation>();
 				}
 			}
@@ -42,7 +42,7 @@ namespace Datadrasil
 		/// <param name="data"></param>
 		public void WriteData(string filePath, List<DataRepresentation> data)
 		{
-			var serializer = new SerializerBuilder().Build();
+			ISerializer serializer = new SerializerBuilder().Build();
 			string yamlData = serializer.Serialize(data);
 
 			File.WriteAllText(filePath, yamlData);

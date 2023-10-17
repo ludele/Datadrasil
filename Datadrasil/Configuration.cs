@@ -1,34 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using YamlDotNet.Serialization.ObjectGraphTraversalStrategies;
 
 namespace Datadrasil
 {
+	/// <summary>
+	/// Represents the configuration interpreter for sorting data.
+	/// </summary>
 	public class Configuration
 	{
-		private readonly FormatHandlerManager fh;
+		private readonly FormatHandlerManager formatHandlerManager;
+		public DataRepresentation dataRepresentation; 
 
-		public Configuration()
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Configuration"/> class.
+		/// </summary>
+		/// <param name="formatHandlerManager">The format handler manager.</param>
+		public Configuration(FormatHandlerManager formatHandlerManager)
 		{
+			this.formatHandlerManager = formatHandlerManager;
 		}
 
-		public Configuration(FormatHandlerManager initFormatHandler)
+		/// <summary>
+		/// Interprets the configuration file for sorting data.
+		/// </summary>
+		/// <param name="configurationFilePath">The path to the configuration file.</param>
+		public void ParseConfiguration(string configurationFilePath)
 		{
-			fh = initFormatHandler;
+			try
+			{
+				string sortingKey = GetSortingKey();
+				bool isNumericKey = IsNumericKey(sortingKey);
+				bool ascendingOrder = GetSortOrder();
+
+				SortData(sortingKey, isNumericKey, ascendingOrder);
+
+				Console.WriteLine("Sorting process completed successfully!");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error during configuration interpretation: {ex.Message}");
+			}
 		}
 
-		public IEnumerable<object> ParseConfiguration(string filePath)
+		private string GetSortingKey()
 		{
-			return new List<object>();
+			Console.WriteLine("Enter the key for sorting:");
+			return Console.ReadLine();
 		}
 
-		public void SaveConfiguration(string filePath, IEnumerable<object> config)
+		private bool IsNumericKey(string key)
 		{
-			
+			return double.TryParse(key, out _);
+		}
+
+		private bool GetSortOrder()
+		{
+			Console.WriteLine("Enter 'asc' for ascending order or 'desc' for descending order:");
+			string order = Console.ReadLine().ToLower();
+			return order == "asc";
+		}
+
+		public void SortData(string sortingKey, bool isNumericKey, bool ascendingOrder)
+		{
+			foreach (var category in dataRepresentation.Categories)
+			{
+				List<DataItem> sortedItems;
+
+				if (isNumericKey)
+				{
+					sortedItems = ascendingOrder
+						? category.Items.OrderBy(item => Convert.ToDouble(item.Properties.FirstOrDefault(kvp => kvp.Key == sortingKey)?.Value)).ToList()
+						: category.Items.OrderByDescending(item => Convert.ToDouble(item.Properties.FirstOrDefault(kvp => kvp.Key == sortingKey)?.Value)).ToList();
+				}
+				else
+				{
+					sortedItems = ascendingOrder
+						? category.Items.OrderBy(item => item.Properties.FirstOrDefault(kvp => kvp.Key == sortingKey)?.Value?.ToString()).ToList()
+						: category.Items.OrderByDescending(item => item.Properties.FirstOrDefault(kvp => kvp.Key == sortingKey)?.Value?.ToString()).ToList();
+				}
+
+				category.Items = sortedItems;
+			}
 		}
 	}
 }
