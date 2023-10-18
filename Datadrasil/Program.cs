@@ -11,7 +11,9 @@ namespace Datadrasil
 	{
 		public static void Main()
 		{
-			Testing.Run();	
+			CommandLineUI commandLineUI = new CommandLineUI("Some Display Text", () => Console.WriteLine("Action executed"));
+
+			commandLineUI.Execute();
 		}
 	}
 }

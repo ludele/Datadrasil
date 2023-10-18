@@ -3,22 +3,23 @@
   <DataRepresentation>
     <Categories>
       <DataCategory>
-        <CategoryName>a</CategoryName>
+        <CategoryName>1</CategoryName>
         <Items>
           <DataItem>
-            <PropertySetName>b</PropertySetName>
+            <PropertySetName>2</PropertySetName>
             <Properties>
               <KeyValue>
-                <Name>c</Name>
-                <Value xsi:type="xsd:string">d</Value>
+                <Name>3</Name>
+                <Value xsi:type="xsd:string">4</Value>
               </KeyValue>
+            </Properties>
+          </DataItem>
+          <DataItem>
+            <PropertySetName>5</PropertySetName>
+            <Properties>
               <KeyValue>
-                <Name>e</Name>
-                <Value xsi:type="xsd:string">q</Value>
-              </KeyValue>
-              <KeyValue>
-                <Name>e</Name>
-                <Value xsi:type="xsd:string">f</Value>
+                <Name>4</Name>
+                <Value xsi:type="xsd:string">3</Value>
               </KeyValue>
             </Properties>
           </DataItem>
@@ -29,11 +30,25 @@
   <DataRepresentation>
     <Categories>
       <DataCategory>
-        <CategoryName>e</CategoryName>
+        <CategoryName>4</CategoryName>
         <Items>
           <DataItem>
-            <PropertySetName>f</PropertySetName>
-            <Properties />
+            <PropertySetName>4</PropertySetName>
+            <Properties>
+              <KeyValue>
+                <Name>4q</Name>
+                <Value xsi:type="xsd:string">q</Value>
+              </KeyValue>
+            </Properties>
+          </DataItem>
+          <DataItem>
+            <PropertySetName>4</PropertySetName>
+            <Properties>
+              <KeyValue>
+                <Name>4</Name>
+                <Value xsi:type="xsd:string">4</Value>
+              </KeyValue>
+            </Properties>
           </DataItem>
         </Items>
       </DataCategory>
