@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace Datadrasil
 {
-    internal class Program
+	public class MenuExtensions
 	{
-		public static void Main()
+		public static MenuComponent CreateMenuComponent(string displayText, Action action)
 		{
-			MenuManager cli = new MenuManager();
-			cli.Execute();
+			return new MenuItem(displayText, action);
 		}
 	}
 }

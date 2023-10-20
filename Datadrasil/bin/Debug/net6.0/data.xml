@@ -3,23 +3,27 @@
   <DataRepresentation>
     <Categories>
       <DataCategory>
-        <CategoryName>1</CategoryName>
+        <CategoryName>TheCategory</CategoryName>
         <Items>
           <DataItem>
-            <PropertySetName>2</PropertySetName>
+            <PropertySetName>TheThing</PropertySetName>
             <Properties>
               <KeyValue>
-                <Name>3</Name>
-                <Value xsi:type="xsd:string">4</Value>
+                <Name>TheItem</Name>
+                <Value xsi:type="xsd:string">TheValue</Value>
+              </KeyValue>
+              <KeyValue>
+                <Name>TheSecondItem</Name>
+                <Value xsi:type="xsd:string">TheSecondValue</Value>
               </KeyValue>
             </Properties>
           </DataItem>
           <DataItem>
-            <PropertySetName>5</PropertySetName>
+            <PropertySetName>TheSecondThing</PropertySetName>
             <Properties>
               <KeyValue>
-                <Name>4</Name>
-                <Value xsi:type="xsd:string">3</Value>
+                <Name>no</Name>
+                <Value xsi:type="xsd:string">yes</Value>
               </KeyValue>
             </Properties>
           </DataItem>
@@ -30,27 +34,8 @@
   <DataRepresentation>
     <Categories>
       <DataCategory>
-        <CategoryName>4</CategoryName>
-        <Items>
-          <DataItem>
-            <PropertySetName>4</PropertySetName>
-            <Properties>
-              <KeyValue>
-                <Name>4q</Name>
-                <Value xsi:type="xsd:string">q</Value>
-              </KeyValue>
-            </Properties>
-          </DataItem>
-          <DataItem>
-            <PropertySetName>4</PropertySetName>
-            <Properties>
-              <KeyValue>
-                <Name>4</Name>
-                <Value xsi:type="xsd:string">4</Value>
-              </KeyValue>
-            </Properties>
-          </DataItem>
-        </Items>
+        <CategoryName>Why!</CategoryName>
+        <Items />
       </DataCategory>
     </Categories>
   </DataRepresentation>

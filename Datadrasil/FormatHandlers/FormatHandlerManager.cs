@@ -40,7 +40,7 @@ namespace Datadrasil
 		{
 			string fileExtension = Path.GetExtension(filePath);
 
-			if (formatHandlers.TryGetValue(fileExtension, out var handler))
+			if (formatHandlers.TryGetValue(fileExtension, out IFormatHandler? handler))
 			{
 				return handler.ReadData(filePath); 
 			}

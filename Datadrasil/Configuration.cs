@@ -63,7 +63,7 @@ namespace Datadrasil
 
 		public void SortData(string sortingKey, bool isNumericKey, bool ascendingOrder)
 		{
-			foreach (var category in dataRepresentation.Categories)
+			foreach (DataCategory category in dataRepresentation.Categories)
 			{
 				List<DataItem> sortedItems;
 

@@ -7,7 +7,6 @@ using Datadrasil.FormatHandlers;
 
 namespace Datadrasil
 {
-
 	public class Testing
 	{
 		public const string tab = "     ";
