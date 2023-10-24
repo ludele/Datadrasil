@@ -4,11 +4,10 @@ using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
 using Datadrasil.FormatHandlers;
-using Datadrasil.MenuSystem;
 
 namespace Datadrasil
 {
-	public class OutputFormatter
+    public class OutputFormatter
 	{
 		public const string tab = "     ";
 		private static readonly MenuBuilder menuBuilder = new MenuBuilder();

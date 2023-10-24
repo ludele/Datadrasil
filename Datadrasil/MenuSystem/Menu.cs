@@ -14,11 +14,19 @@ namespace Datadrasil
 		/// <returns>Returns the main menu list, of the MenuComponent data type</returns>
 		public static List<MenuComponent> Main()
 		{
+			MenuComponent ConfigurationMenu = new MenuBuilder()
+				.SetDisplayText("Configuration Menu")
+				.AddSubMenu(new MenuItem("Test", () => Console.WriteLine("Hello, World!")))
+				.AddSubMenu(new MenuItem("Ascending", () => { Configuration.ConfigureOptions(true); }))
+				.AddSubMenu(new MenuItem("Descending", () => { Configuration.ConfigureOptions(false); }))
+				.Build();
+
 			return new List<MenuComponent>
 			{
 				new MenuItem("Quit", () => Environment.Exit(0)),
 				new MenuItem("Create files", () => Testing.Run()),
-				new MenuItem("Clear screen", () => Console.Clear())
+				new MenuItem("Clear screen", () => Console.Clear()),
+				ConfigurationMenu,  // Using the built submenu here
 			};
 		}
 	}

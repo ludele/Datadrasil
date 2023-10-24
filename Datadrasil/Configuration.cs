@@ -4,21 +4,21 @@ using System.Linq;
 
 namespace Datadrasil
 {
-	/// <summary>
-	/// Represents the configuration interpreter for sorting data.
-	/// </summary>
-	public class Configuration
+    /// <summary>
+    /// Represents the configuration interpreter for sorting data.
+    /// </summary>
+    public class Configuration
 	{
 		private readonly FormatHandlerManager formatHandlerManager;
 		public DataRepresentation dataRepresentation; 
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Configuration"/> class.
+		/// Initializes a new instance of the Configuration class.
 		/// </summary>
 		/// <param name="formatHandlerManager">The format handler manager.</param>
-		public Configuration(FormatHandlerManager formatHandlerManager)
+		public Configuration(FormatHandlerManager initFormatHandlerManager)
 		{
-			this.formatHandlerManager = formatHandlerManager;
+			this.formatHandlerManager = initFormatHandlerManager;
 		}
 
 		/// <summary>
@@ -42,6 +42,14 @@ namespace Datadrasil
 				Console.WriteLine($"Error during configuration interpretation: {ex.Message}");
 			}
 		}
+
+		public static void ConfigureOptions(bool isAscending)
+		{
+			if (isAscending)
+			{
+                Console.WriteLine("Ascending");
+            }
+        }
 
 		private string GetSortingKey()
 		{
