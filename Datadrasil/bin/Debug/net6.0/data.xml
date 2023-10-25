@@ -3,27 +3,22 @@
   <DataRepresentation>
     <Categories>
       <DataCategory>
-        <CategoryName>TheCategory</CategoryName>
+        <CategoryName>abc</CategoryName>
         <Items>
           <DataItem>
-            <PropertySetName>TheThing</PropertySetName>
+            <PropertySetName>def</PropertySetName>
             <Properties>
               <KeyValue>
-                <Name>TheItem</Name>
-                <Value xsi:type="xsd:string">TheValue</Value>
+                <Name>abcddef</Name>
+                <Value xsi:type="xsd:string">q</Value>
               </KeyValue>
               <KeyValue>
-                <Name>TheSecondItem</Name>
-                <Value xsi:type="xsd:string">TheSecondValue</Value>
+                <Name>d</Name>
+                <Value xsi:type="xsd:string">e</Value>
               </KeyValue>
-            </Properties>
-          </DataItem>
-          <DataItem>
-            <PropertySetName>TheSecondThing</PropertySetName>
-            <Properties>
               <KeyValue>
-                <Name>no</Name>
-                <Value xsi:type="xsd:string">yes</Value>
+                <Name>f</Name>
+                <Value xsi:type="xsd:string">g</Value>
               </KeyValue>
             </Properties>
           </DataItem>
@@ -34,8 +29,43 @@
   <DataRepresentation>
     <Categories>
       <DataCategory>
-        <CategoryName>Why!</CategoryName>
-        <Items />
+        <CategoryName>Ababsafsda</CategoryName>
+        <Items>
+          <DataItem>
+            <PropertySetName>asdasdafef</PropertySetName>
+            <Properties>
+              <KeyValue>
+                <Name>fasdfasdf</Name>
+                <Value xsi:type="xsd:string">sadfasdf</Value>
+              </KeyValue>
+              <KeyValue>
+                <Name>asdfasdfasd</Name>
+                <Value xsi:type="xsd:string">fasdfas</Value>
+              </KeyValue>
+              <KeyValue>
+                <Name>dfasdfasdf</Name>
+                <Value xsi:type="xsd:string">q</Value>
+              </KeyValue>
+              <KeyValue>
+                <Name>asdfasdf</Name>
+                <Value xsi:type="xsd:string">asdfasd</Value>
+              </KeyValue>
+            </Properties>
+          </DataItem>
+        </Items>
+      </DataCategory>
+    </Categories>
+  </DataRepresentation>
+  <DataRepresentation>
+    <Categories>
+      <DataCategory>
+        <CategoryName>fsadfasdf</CategoryName>
+        <Items>
+          <DataItem>
+            <PropertySetName>asdfasdf</PropertySetName>
+            <Properties />
+          </DataItem>
+        </Items>
       </DataCategory>
     </Categories>
   </DataRepresentation>

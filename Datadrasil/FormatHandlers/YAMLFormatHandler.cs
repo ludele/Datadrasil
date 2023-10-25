@@ -1,31 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
-using Datadrasil.FormatHandlers;
+using System.IO;
 using YamlDotNet.Serialization;
 
 namespace Datadrasil
 {
-    internal class YAMLFormatHandler : IFormatHandler
+	/// <summary>
+	/// Handles YAML format for data of type T.
+	/// </summary>
+	internal class YAMLFormatHandler<T> : IFormatHandler<T>
 	{
-		/// <summary>
-		///	YAML data reading logic that returns a list of objects.
-		/// </summary>
-		/// <param name="filepath">File to be serialized</param>
-		/// <returns>List of objects parsed from the YAML data<returns>
-		public List<DataRepresentation> ReadData(string filePath)
+		/// <inheritdoc/>
+		public List<T> ReadData(string filePath)
 		{
 			try
 			{
 				using (FileStream stream = new FileStream(filePath, FileMode.Open))
 				{
 					Deserializer deserializer = new Deserializer();
-					List<DataRepresentation> yamlObject = deserializer.Deserialize<List<DataRepresentation>>(new StreamReader(stream));
-					return yamlObject ?? new List<DataRepresentation>();
+					List<T> yamlObject = deserializer.Deserialize<List<T>>(new StreamReader(stream));
+					return yamlObject ?? new List<T>();
 				}
 			}
 			catch (Exception ex)
@@ -33,14 +27,9 @@ namespace Datadrasil
 				throw new InvalidOperationException("Error occurred during YAML deserialization.", ex);
 			}
 		}
-		/// <summary>
-		/// Writes YAML data to a new file. 
-		/// To be used for the final sorted output,
-		/// where the "data" is the sorted list
-		/// </summary>
-		/// <param name="filePath"></param>
-		/// <param name="data"></param>
-		public void WriteData(string filePath, List<DataRepresentation> data)
+
+		/// <inheritdoc/>
+		public void WriteData(string filePath, List<T> data)
 		{
 			ISerializer serializer = new SerializerBuilder().Build();
 			string yamlData = serializer.Serialize(data);

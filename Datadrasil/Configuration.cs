@@ -9,14 +9,14 @@ namespace Datadrasil
     /// </summary>
     public class Configuration
 	{
-		private readonly FormatHandlerManager formatHandlerManager;
+		private readonly FormatHandlerManager<DataRepresentation> formatHandlerManager;
 		public DataRepresentation dataRepresentation; 
 
 		/// <summary>
 		/// Initializes a new instance of the Configuration class.
 		/// </summary>
 		/// <param name="formatHandlerManager">The format handler manager.</param>
-		public Configuration(FormatHandlerManager initFormatHandlerManager)
+		public Configuration(FormatHandlerManager<DataRepresentation> initFormatHandlerManager)
 		{
 			this.formatHandlerManager = initFormatHandlerManager;
 		}

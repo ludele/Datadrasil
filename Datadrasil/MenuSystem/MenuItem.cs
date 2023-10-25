@@ -16,13 +16,15 @@ namespace Datadrasil
         public MenuItem(string initDisplayText, Action? initAction = null, List<MenuComponent>? subMenu = null)
         {
             DisplayText = initDisplayText;
-            action = initAction ?? (() => Console.WriteLine("No action specified."));
+            action = initAction ?? (() => Console.Clear());
             this.subMenu = subMenu ?? new List<MenuComponent>();
         }
 
         public override void Execute()
         {
+            Console.Clear();
             action();
+            Console.WriteLine("");
             if (HasSubMenu)
             {
                 MenuManager subMenuUI = new MenuManager(subMenu);

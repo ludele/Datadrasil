@@ -31,7 +31,14 @@ namespace Datadrasil
             return this;
         }
 
-        public MenuComponent Build()
+		public MenuBuilder AddSubMenus(params MenuComponent[] subMenus)
+		{
+			subMenu ??= new List<MenuComponent>();
+			subMenu.AddRange(subMenus);
+			return this;
+		}
+
+		public MenuComponent Build()
         {
             return new MenuItem(displayText, action, subMenu);
         }

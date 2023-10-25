@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Datadrasil
 {
-	public struct ConfigurationOptions
+	public struct ConfigurationOptions 
 	{
-		public bool Ascending;
+		public bool Ascending; 
 	}
 }

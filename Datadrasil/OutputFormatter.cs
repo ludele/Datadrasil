@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
-using Datadrasil.FormatHandlers;
 
 namespace Datadrasil
 {
@@ -11,7 +10,7 @@ namespace Datadrasil
 	{
 		public const string tab = "     ";
 		private static readonly MenuBuilder menuBuilder = new MenuBuilder();
-		public static FormatHandlerManager fh = new FormatHandlerManager();
+		public static FormatHandlerManager<DataRepresentation> fh = new FormatHandlerManager<DataRepresentation>();
 		public static void Run()
 		{
 			List<DataRepresentation> dataToSerialize = CreateSerializedData();

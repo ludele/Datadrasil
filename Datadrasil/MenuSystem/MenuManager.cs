@@ -15,7 +15,6 @@ namespace Datadrasil
 
         public MenuManager(IEnumerable<MenuComponent> customMenu = null)
         {
-            DisplayText = "Main Menu";
             currentMenu = customMenu?.ToList() ?? MainMenu;
             menuStack = new Stack<List<MenuComponent>>();
         }
@@ -35,17 +34,19 @@ namespace Datadrasil
                     if (selectedMenuComponent is MenuItem menuItem && menuItem.HasSubMenu)
                     {
                         menuStack.Push(currentMenu);
-                        currentMenu = menuItem.GetSubMenu();
-                    }
+						DisplayText = menuItem.GetSubMenu().FirstOrDefault()?.DisplayText ?? "Main Menu";
+					}
                     else
                     {
                         if (menuStack.Count > 0)
                         {
                             currentMenu = menuStack.Pop();
-                        }
+							DisplayText = currentMenu.LastOrDefault()?.DisplayText ?? "Main Menu";
+						}
                         else
                         {
                             currentMenu = MainMenu;
+                            DisplayText = "Main menu";
                         }
                     }
                 }
@@ -59,8 +60,6 @@ namespace Datadrasil
 
         private void ShowMenu()
         {
-            Console.WriteLine(DisplayText);
-
             for (int i = 0; i < currentMenu.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {currentMenu[i].DisplayText}");

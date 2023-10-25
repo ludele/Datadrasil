@@ -1,16 +1,29 @@
 - Categories:
-  - CategoryName: TheCategory
+  - CategoryName: abc
     Items:
-    - PropertySetName: TheThing
+    - PropertySetName: def
       Properties:
-      - Name: TheItem
-        Value: TheValue
-      - Name: TheSecondItem
-        Value: TheSecondValue
-    - PropertySetName: TheSecondThing
-      Properties:
-      - Name: no
-        Value: yes
+      - Name: abcddef
+        Value: q
+      - Name: d
+        Value: e
+      - Name: f
+        Value: g
 - Categories:
-  - CategoryName: Why!
-    Items: []
+  - CategoryName: Ababsafsda
+    Items:
+    - PropertySetName: asdasdafef
+      Properties:
+      - Name: fasdfasdf
+        Value: sadfasdf
+      - Name: asdfasdfasd
+        Value: fasdfas
+      - Name: dfasdfasdf
+        Value: q
+      - Name: asdfasdf
+        Value: asdfasd
+- Categories:
+  - CategoryName: fsadfasdf
+    Items:
+    - PropertySetName: asdfasdf
+      Properties: []

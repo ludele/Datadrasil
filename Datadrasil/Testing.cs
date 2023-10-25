@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
-using Datadrasil.FormatHandlers;
 
 namespace Datadrasil
 {
 	public class Testing
 	{
 		public const string tab = "     ";
-		public static FormatHandlerManager fh = new FormatHandlerManager();
+		public static FormatHandlerManager<DataRepresentation> fh = new FormatHandlerManager<DataRepresentation>();
 		public static void Run()
 		{
 			List<DataRepresentation> dataToSerialize = CreateSeralizedData();
