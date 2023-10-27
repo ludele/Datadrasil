@@ -6,42 +6,67 @@ using System.Threading.Tasks;
 
 namespace Datadrasil
 {
-	public class Menu
-	{
-		/// <summary>
-		/// A list that just returns the man
-		/// </summary>
-		/// <returns>Returns the main menu list, of the MenuComponent data type</returns>
-		public static List<MenuComponent> Main()
-		{
+    public class Menu : MenuComponent
+    {
+        private readonly Stack<List<MenuComponent>> menuStack;
+        private List<MenuComponent> currentMenu;
 
-			MenuComponent ChooseSeralizer = new MenuBuilder()
-				.SetDisplayText("ChooseSeralizer")
-				.AddSubMenu(new MenuItem("JSON", () => {  }))
-				.AddSubMenu(new MenuItem("XML", () => {  }))
-				.AddSubMenu(new MenuItem("YAML", () => {  }))
-				.Build();
+        List<MenuComponent> MainMenu = MainMenus.Main();
 
-			MenuComponent CrashTest = new MenuBuilder()
-				.SetDisplayText("Test Menu")
-				.AddSubMenu(new MenuItem("Test", () => throw new Exception("test")))
-				.Build();
+        public Menu(IEnumerable<MenuComponent> customMenu = null)
+        {
+            currentMenu = customMenu?.ToList() ?? MainMenu;
+            menuStack = new Stack<List<MenuComponent>>();
+        }
 
-			MenuComponent ConfigurationMenu = new MenuBuilder()
-				.SetDisplayText("Configuration Menu")
-				.AddSubMenu(new MenuItem("Test", () => Console.WriteLine("Hello, World!")))
-				.AddSubMenu(new MenuItem("Ascending", () => { Configuration.ConfigureOptions(true); }))
-				.AddSubMenu(new MenuItem("Descending", () => { Configuration.ConfigureOptions(false); }))
-				.AddSubMenus(CrashTest)
-				.Build();
+        public override void Execute()
+        {
+            Console.WriteLine(); // To create some space, options starts to appear from the second row.
+            while (true)
+            {
+                ShowMenu();
+                string userInput = Console.ReadLine();
 
-			return new List<MenuComponent>
-			{
-				new MenuItem("Quit", () => Environment.Exit(0)),
-				new MenuItem("Create files", () => Testing.Run()),
-				new MenuItem("Clear screen", () => Console.Clear()),
-				ConfigurationMenu,
-			};
-		}
-	}
+                if (int.TryParse(userInput, out int index) && index >= 1 && index <= currentMenu.Count)
+                {
+                    MenuComponent selectedMenuComponent = currentMenu[index - 1];
+                    selectedMenuComponent.Execute();
+
+                    if (selectedMenuComponent is MenuItem menuItem && menuItem.HasSubMenu)
+                    {
+                        menuStack.Push(currentMenu);
+						DisplayText = menuItem.GetSubMenu().FirstOrDefault()?.DisplayText ?? "Main MainMenus";
+					}
+                    else
+                    {
+                        if (menuStack.Count > 0)
+                        {
+                            currentMenu = menuStack.Pop();
+							DisplayText = currentMenu.LastOrDefault()?.DisplayText ?? "Main MainMenus";
+						}
+                        else
+                        {
+                            currentMenu = MainMenu;
+                            DisplayText = "Main menu";
+                        }
+                    }
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Invalid option. Please try again.");
+                }
+            }
+        }
+
+        private void ShowMenu()
+        {
+            for (int i = 0; i < currentMenu.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {currentMenu[i].DisplayText}");
+            }
+
+            Console.Write("Select an option: ");
+        }
+    }
 }

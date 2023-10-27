@@ -1,0 +1,10 @@
+[2023-10-27 10:33:50] System.Exception: test
+StackTrace:    at Datadrasil.Menu.<>c.<Main>b__0_3() in C:\Users\ludvig.johansson1\Main\memodrasil\Datadrasil\Datadrasil\MenuSystem\Menu.cs:line 27
+   at Datadrasil.MenuItem.Execute() in C:\Users\ludvig.johansson1\Main\memodrasil\Datadrasil\Datadrasil\MenuSystem\MenuItem.cs:line 26
+   at Datadrasil.MenuManager.Execute() in C:\Users\ludvig.johansson1\Main\memodrasil\Datadrasil\Datadrasil\MenuSystem\MenuManager.cs:line 32
+   at Datadrasil.MenuItem.Execute() in C:\Users\ludvig.johansson1\Main\memodrasil\Datadrasil\Datadrasil\MenuSystem\MenuItem.cs:line 31
+   at Datadrasil.MenuManager.Execute() in C:\Users\ludvig.johansson1\Main\memodrasil\Datadrasil\Datadrasil\MenuSystem\MenuManager.cs:line 32
+   at Datadrasil.MenuItem.Execute() in C:\Users\ludvig.johansson1\Main\memodrasil\Datadrasil\Datadrasil\MenuSystem\MenuItem.cs:line 31
+   at Datadrasil.MenuManager.Execute() in C:\Users\ludvig.johansson1\Main\memodrasil\Datadrasil\Datadrasil\MenuSystem\MenuManager.cs:line 32
+   at Datadrasil.Program.Main() in C:\Users\ludvig.johansson1\Main\memodrasil\Datadrasil\Datadrasil\Program.cs:line 19
+------------------------------

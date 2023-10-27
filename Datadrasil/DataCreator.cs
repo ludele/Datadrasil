@@ -6,31 +6,50 @@ using System.Xml.Serialization;
 
 namespace Datadrasil
 {
-	public class Testing
+	public class DataCreator
 	{
 		public const string tab = "     ";
-		public static FormatHandlerManager<DataRepresentation> fh = new FormatHandlerManager<DataRepresentation>();
-		public static void Run()
+		public static FormatHandlerManager<DataRepresentation> formatHandler = new FormatHandlerManager<DataRepresentation>();
+		public static string ChooseFormatAndFileName(string format)
 		{
-			List<DataRepresentation> dataToSerialize = CreateSeralizedData();
+            Console.Write("\nEnter filename (without extension)\n: ");
+			string input = Console.ReadLine();
 
-			string jsonFilePath = "data.json";
-			string yamlFilePath = "data.yaml";
-			string xmlFilePath = "data.xml";
+			string fileName = $"{input}.{format.ToLower()}";
 
-			fh.WriteData(jsonFilePath, dataToSerialize);
-			fh.WriteData(yamlFilePath, dataToSerialize);
-			fh.WriteData(xmlFilePath, dataToSerialize);
+			return fileName;
+        }
+		
+		public static void Run(string format)
+		{
+			string fileName = ChooseFormatAndFileName(format);
+			List<DataRepresentation> data = CreateData();
 
-			DisplayDeserializedData("JSON", jsonFilePath);
-			DisplayDeserializedData("YAML", yamlFilePath);
-			DisplayDeserializedData("XML", xmlFilePath);
+			formatHandler.WriteData(fileName, data);
+
+			DisplayData(data);
 
 			Console.ReadLine();
 		}
-		private static List<DataRepresentation> CreateSeralizedData()
+
+		static string[] ListFiles()
 		{
-			List<DataRepresentation> dataToSerialize = new List<DataRepresentation>();
+			string directory = Directory.GetCurrentDirectory();
+
+			string[] files = Directory.GetFiles(directory);
+
+			string[] filteredFiles = files
+				.Where(file => file.EndsWith(".xml", StringComparison.OrdinalIgnoreCase) ||
+							   file.EndsWith(".yaml", StringComparison.OrdinalIgnoreCase) ||
+							   file.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+				.ToArray();
+
+			return filteredFiles;
+		}
+
+		private static List<DataRepresentation> CreateData()
+		{
+			List<DataRepresentation> data = new List<DataRepresentation>();
 
 			while (true)
 			{
@@ -59,7 +78,7 @@ namespace Datadrasil
 					DataItem Dataitem = new DataItem();
 					DataItem item = new DataItem { PropertySetName = itemName };
 
-					while (true)
+                    while (true)
 					{
 						Console.Write("Property Name to serialize (enter 'q' to go back to items): ");
 						string propertyName = Console.ReadLine();
@@ -79,20 +98,16 @@ namespace Datadrasil
 				}
 
 				dataRepresentation.Categories.Add(category);
-				dataToSerialize.Add(dataRepresentation);
+				data.Add(dataRepresentation);
 			}
 
-			return dataToSerialize;
+			return data;
 		}
-		private static void DisplayDeserializedData(string format, string filePath)
+		private static void DisplayData(List<DataRepresentation> data)
 		{
-			List<DataRepresentation> deserializedData = fh.ReadData(filePath);
-
-			Console.WriteLine($"Deserialized {format} Data:");
-
 			string output = "";
 
-			foreach (DataRepresentation dataRepresentation in deserializedData)
+			foreach (DataRepresentation dataRepresentation in data)
 			{
 				foreach (DataCategory category in dataRepresentation.Categories)
 				{

@@ -16,7 +16,7 @@ namespace Datadrasil
 			{
 				try
 				{
-					new MenuManager().Execute();
+					new Menu().Execute();
 				}
 				catch (Exception ex)
 				{

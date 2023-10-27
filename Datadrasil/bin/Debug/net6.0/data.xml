@@ -3,69 +3,21 @@
   <DataRepresentation>
     <Categories>
       <DataCategory>
-        <CategoryName>abc</CategoryName>
+        <CategoryName>abcdef</CategoryName>
         <Items>
           <DataItem>
-            <PropertySetName>def</PropertySetName>
-            <Properties>
-              <KeyValue>
-                <Name>abcddef</Name>
-                <Value xsi:type="xsd:string">q</Value>
-              </KeyValue>
-              <KeyValue>
-                <Name>d</Name>
-                <Value xsi:type="xsd:string">e</Value>
-              </KeyValue>
-              <KeyValue>
-                <Name>f</Name>
-                <Value xsi:type="xsd:string">g</Value>
-              </KeyValue>
-            </Properties>
-          </DataItem>
-        </Items>
-      </DataCategory>
-    </Categories>
-  </DataRepresentation>
-  <DataRepresentation>
-    <Categories>
-      <DataCategory>
-        <CategoryName>Ababsafsda</CategoryName>
-        <Items>
-          <DataItem>
-            <PropertySetName>asdasdafef</PropertySetName>
-            <Properties>
-              <KeyValue>
-                <Name>fasdfasdf</Name>
-                <Value xsi:type="xsd:string">sadfasdf</Value>
-              </KeyValue>
-              <KeyValue>
-                <Name>asdfasdfasd</Name>
-                <Value xsi:type="xsd:string">fasdfas</Value>
-              </KeyValue>
-              <KeyValue>
-                <Name>dfasdfasdf</Name>
-                <Value xsi:type="xsd:string">q</Value>
-              </KeyValue>
-              <KeyValue>
-                <Name>asdfasdf</Name>
-                <Value xsi:type="xsd:string">asdfasd</Value>
-              </KeyValue>
-            </Properties>
-          </DataItem>
-        </Items>
-      </DataCategory>
-    </Categories>
-  </DataRepresentation>
-  <DataRepresentation>
-    <Categories>
-      <DataCategory>
-        <CategoryName>fsadfasdf</CategoryName>
-        <Items>
-          <DataItem>
-            <PropertySetName>asdfasdf</PropertySetName>
+            <PropertySetName>abcdefgh</PropertySetName>
             <Properties />
           </DataItem>
         </Items>
+      </DataCategory>
+    </Categories>
+  </DataRepresentation>
+  <DataRepresentation>
+    <Categories>
+      <DataCategory>
+        <CategoryName />
+        <Items />
       </DataCategory>
     </Categories>
   </DataRepresentation>

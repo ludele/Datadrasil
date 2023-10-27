@@ -10,7 +10,8 @@ namespace Datadrasil
     public class Configuration
 	{
 		private readonly FormatHandlerManager<DataRepresentation> formatHandlerManager;
-		public DataRepresentation dataRepresentation; 
+		private DataSorter dataSorter;
+		public DataRepresentation dataRepresentation;
 
 		/// <summary>
 		/// Initializes a new instance of the Configuration class.
@@ -33,7 +34,7 @@ namespace Datadrasil
 				bool isNumericKey = IsNumericKey(sortingKey);
 				bool ascendingOrder = GetSortOrder();
 
-				SortData(sortingKey, isNumericKey, ascendingOrder);
+				dataSorter.SortData(sortingKey, isNumericKey, ascendingOrder);
 
 				Console.WriteLine("Sorting process completed successfully!");
 			}
@@ -50,7 +51,6 @@ namespace Datadrasil
                 Console.WriteLine("Ascending");
             }
         }
-
 		private string GetSortingKey()
 		{
 			Console.WriteLine("Enter the key for sorting:");
@@ -67,29 +67,6 @@ namespace Datadrasil
 			Console.WriteLine("Enter 'asc' for ascending order or 'desc' for descending order:");
 			string order = Console.ReadLine().ToLower();
 			return order == "asc";
-		}
-
-		public void SortData(string sortingKey, bool isNumericKey, bool ascendingOrder)
-		{
-			foreach (DataCategory category in dataRepresentation.Categories)
-			{
-				List<DataItem> sortedItems;
-
-				if (isNumericKey)
-				{
-					sortedItems = ascendingOrder
-						? category.Items.OrderBy(item => Convert.ToDouble(item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value)).ToList()
-						: category.Items.OrderByDescending(item => Convert.ToDouble(item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value)).ToList();
-				}
-				else
-				{
-					sortedItems = ascendingOrder
-						? category.Items.OrderBy(item => item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value?.ToString()).ToList()
-						: category.Items.OrderByDescending(item => item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value?.ToString()).ToList();
-				}
-
-				category.Items = sortedItems;
-			}
 		}
 	}
 }

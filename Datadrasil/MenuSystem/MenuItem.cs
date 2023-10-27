@@ -27,7 +27,7 @@ namespace Datadrasil
             Console.WriteLine("");
             if (HasSubMenu)
             {
-                MenuManager subMenuUI = new MenuManager(subMenu);
+                Menu subMenuUI = new Menu(subMenu);
                 subMenuUI.Execute();
             }
         }

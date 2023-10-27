@@ -1,29 +1,8 @@
 - Categories:
-  - CategoryName: abc
+  - CategoryName: abcdef
     Items:
-    - PropertySetName: def
-      Properties:
-      - Name: abcddef
-        Value: q
-      - Name: d
-        Value: e
-      - Name: f
-        Value: g
-- Categories:
-  - CategoryName: Ababsafsda
-    Items:
-    - PropertySetName: asdasdafef
-      Properties:
-      - Name: fasdfasdf
-        Value: sadfasdf
-      - Name: asdfasdfasd
-        Value: fasdfas
-      - Name: dfasdfasdf
-        Value: q
-      - Name: asdfasdf
-        Value: asdfasd
-- Categories:
-  - CategoryName: fsadfasdf
-    Items:
-    - PropertySetName: asdfasdf
+    - PropertySetName: abcdefgh
       Properties: []
+- Categories:
+  - CategoryName: ''
+    Items: []

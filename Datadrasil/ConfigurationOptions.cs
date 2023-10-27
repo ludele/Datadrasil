@@ -8,6 +8,8 @@ namespace Datadrasil
 {
 	public struct ConfigurationOptions 
 	{
-		public bool Ascending; 
+		public string sortingKey;
+		public bool IsAscending;
+		public bool isNumberic;
 	}
 }
