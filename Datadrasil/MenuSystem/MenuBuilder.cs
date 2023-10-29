@@ -14,7 +14,7 @@ namespace Datadrasil
         private string displayText { get; set; }
         private Action action;
         private List<MenuComponent> option; 
-
+    
         /// <summary>
         /// Constuctor to set the display text.
         /// </summary>

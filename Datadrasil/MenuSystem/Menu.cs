@@ -18,11 +18,11 @@ namespace Datadrasil
         // List of the main menu
         List<MenuComponent> MainMenu = MainMenus.Main();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="customMenu"></param>
-        public Menu(IEnumerable<MenuComponent> customMenu = null)
+		/// <summary>
+		/// Initalizes a new instance of the menu class
+		/// </summary>
+		/// <param name="customMenu">An optional parameter allowing the initialization of the menu with a custom set of menu components.</param>
+		public Menu(IEnumerable<MenuComponent> customMenu = null)
         {
             currentMenu = customMenu?.ToList() ?? MainMenu;
             menuStack = new Stack<List<MenuComponent>>();
@@ -34,7 +34,7 @@ namespace Datadrasil
         public override void Execute()
         {
             while (true)
-            {
+            {      
                 ShowMenu();
                 string userInput = Console.ReadLine();
 

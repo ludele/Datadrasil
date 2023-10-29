@@ -1,7 +1,8 @@
 - Categories:
-  - CategoryName: Category
+  - CategoryName: abcdef
+    Items: []
+- Categories:
+  - CategoryName: a
     Items:
-    - ItemName: Item1
-      Properties:
-      - Name: Property
-        Value: something
+    - ItemName: a
+      Properties: []

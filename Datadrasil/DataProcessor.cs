@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Datadrasil
 {
 	/// <summary>
-	/// Mostly not implemented: Class responsible for processing and managing data representations.
+	/// Not implemented: Class responsible for processing and managing data representations.
 	/// </summary>
 	public class DataProcessor
 	{
@@ -16,7 +16,6 @@ namespace Datadrasil
 		// Dictionary to store saved data representations with identifiers.
 		private readonly Dictionary<string, DataRepresentation> savedLists;
 		private readonly Configuration configuration;
-		private readonly FileUtility fileUtility = new FileUtility(".xml", ".yaml", ".json");
 
 		/// <summary>
 		/// Initializes a new instance of the DataProcessor class
@@ -43,7 +42,7 @@ namespace Datadrasil
 		/// Loads a saved data represenation based on its identifier.
 		/// </summary>
 		/// <param name="identifier">The identifier of the saved data representation</param>
-		/// <returns>THe loaded data representation</returns>
+		/// <returns>The loaded data representation</returns>
 		/// <exception cref="ArgumentException"></exception>
 		public DataRepresentation LoadDataRepresentation(string identifier)
 		{
