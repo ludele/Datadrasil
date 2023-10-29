@@ -49,7 +49,6 @@ namespace Datadrasil
 			List<string> fileNames = new List<string>();
 			string[] files = ListFiles();
 
-            Console.WriteLine("List of Files:");
             foreach (string file in files)
 			{
 				string fileName = Path.GetFileName(file);

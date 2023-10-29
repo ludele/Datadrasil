@@ -1,0 +1,7 @@
+- Categories:
+  - CategoryName: Category
+    Items:
+    - ItemName: Item1
+      Properties:
+      - Name: Property
+        Value: something

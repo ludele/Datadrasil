@@ -31,7 +31,6 @@ namespace Datadrasil
 					
 					string fileName = $"{input}.{format.ToLower()}";
 					return fileName;
-					break;
 				}
 
 				else
