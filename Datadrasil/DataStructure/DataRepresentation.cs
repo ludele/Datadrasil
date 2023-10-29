@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace Datadrasil
 {
-	[XmlRoot("DataRepresentation")]
+	/// <summary>
+	/// The main structure holding all the others.
+	/// </summary>
 	public class DataRepresentation
 	{
 		/// <summary>
@@ -25,7 +26,7 @@ namespace Datadrasil
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DataCategory"/> class
+		/// Constuctor that makes the DataRepresentation class a list of DataCategories
 		/// </summary>
 		public DataRepresentation()
 		{

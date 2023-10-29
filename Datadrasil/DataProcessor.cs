@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace Datadrasil
 {
+	/// <summary>
+	/// Mostly not implemented: Class responsible for processing and managing data representations.
+	/// </summary>
 	public class DataProcessor
 	{
 		private readonly FormatHandlerManager<DataRepresentation> formatHandler;
+		// Dictionary to store saved data representations with identifiers.
 		private readonly Dictionary<string, DataRepresentation> savedLists;
 		private readonly Configuration configuration;
+		private readonly FileUtility fileUtility = new FileUtility(".xml", ".yaml", ".json");
 
+		/// <summary>
+		/// Initializes a new instance of the DataProcessor class
+		/// </summary>
+		/// <param name="initFormatHandler">The initialization of the format handler manager</param>
 		public DataProcessor(FormatHandlerManager<DataRepresentation> initFormatHandler)
 		{
 			this.formatHandler = initFormatHandler;
@@ -19,11 +29,22 @@ namespace Datadrasil
 			this.configuration = new Configuration(formatHandler);
 		}
 
+		/// <summary>
+		/// Saves a data representation with a specified identifier.
+		/// </summary>
+		/// <param name="identifier">The identifier for the saved data.</param>
+		/// <param name="data">The data representation to be saved.</param>
 		public void SaveData(string identifier, DataRepresentation data)
 		{
 			savedLists[identifier] = data;
 		}
 
+		/// <summary>
+		/// Loads a saved data represenation based on its identifier.
+		/// </summary>
+		/// <param name="identifier">The identifier of the saved data representation</param>
+		/// <returns>THe loaded data representation</returns>
+		/// <exception cref="ArgumentException"></exception>
 		public DataRepresentation LoadDataRepresentation(string identifier)
 		{
 			if (savedLists.TryGetValue(identifier, out DataRepresentation data))
@@ -33,31 +54,5 @@ namespace Datadrasil
 
 			throw new ArgumentException($"List with identifier '{identifier}' not found.");
 		}
-
-		public void SortAndSerializeData(string configurationFilePath, string outputFilePath, string listIdentifier)
-		{
-			if (savedLists.TryGetValue(listIdentifier, out DataRepresentation data))
-			{
-				try
-				{
-					configuration.dataRepresentation = data;
-					configuration.ParseConfiguration(configurationFilePath);
-					formatHandler.WriteData(outputFilePath, new List<DataRepresentation> { data });
-				}
-				catch (Exception ex)
-				{
-					// Handle any exceptions during sorting and serialization
-					Console.WriteLine($"Error: {ex.Message}");
-				}
-			}
-			else
-			{
-				// Handle the case where the identifier is not found
-				Console.WriteLine($"List with identifier '{listIdentifier}' not found.");
-			}
-		}
-
-
-
 	}
 }

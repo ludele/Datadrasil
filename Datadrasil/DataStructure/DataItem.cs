@@ -9,9 +9,12 @@ namespace Datadrasil
 {
 	public class DataItem
 	{
-		public string PropertySetName { get; set; }
 		/// <summary>
-		/// A dictionary containing each key name and item value
+		/// The name of the DataItem
+		/// </summary>
+		public string ItemName { get; set; }
+		/// <summary>
+		/// A List of each key name and item value
 		/// </summary>
 		private List<KeyValue> properties = new List<KeyValue>();
 		/// <summary>
@@ -24,7 +27,7 @@ namespace Datadrasil
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DataItem"/> class
+		/// Constuctor that makes the DataItem class a list of KeyValue.
 		/// </summary>
 		public DataItem()
 		{

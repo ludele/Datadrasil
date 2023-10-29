@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Datadrasil
 {
+    /// <summary>
+    /// The next highest structure that holds the other smaller structures inside a category.
+    /// </summary>
     public class DataCategory
     {
         /// <summary>
@@ -27,7 +30,7 @@ namespace Datadrasil
 		}
 
 		/// <summary>
-		/// Initalizes a new instance of the <see cref="DataCategory"/> class.
+		/// Constuctor that makes the DataCategory class a list of DataItem.
 		/// </summary>
 		public DataCategory()
         {

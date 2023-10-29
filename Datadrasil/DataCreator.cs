@@ -6,20 +6,58 @@ using System.Xml.Serialization;
 
 namespace Datadrasil
 {
+	/// <summary>
+	/// Class responsible for creating and seralizing data representations.
+	/// </summary>
 	public class DataCreator
 	{
-		public const string tab = "     ";
+		public const string tab = "     "; // Tab space for easier formating in output.
 		public static FormatHandlerManager<DataRepresentation> formatHandler = new FormatHandlerManager<DataRepresentation>();
+
+		/// <summary>
+		/// Allows the user to choose a filename on the specified format.
+		/// </summary>
+		/// <param name="format">The choosen format for the data</param>
+		/// <returns>The choosen filename with the file extension of the choosen format</returns>
 		public static string ChooseFormatAndFileName(string format)
 		{
-            Console.Write("\nEnter filename (without extension)\n: ");
-			string input = Console.ReadLine();
+			while (true)
+			{
+				Console.Write("\nEnter filename (without extension)\n: ");
+				string input = Console.ReadLine();
 
-			string fileName = $"{input}.{format.ToLower()}";
+				if (IsValidFilename(input) && !string.IsNullOrEmpty(input))
+				{
+					
+					string fileName = $"{input}.{format.ToLower()}";
+					return fileName;
+					break;
+				}
 
-			return fileName;
+				else
+				{
+					Console.Clear();
+					Console.WriteLine($"Invalid filename: {input}");
+				}
+			}
         }
-		
+
+		/// <summary>
+		/// Checks if the filename is valid.
+		/// </summary>
+		/// <param name="filename">Filename to validate</param>
+		/// <returns>Returns a bool whether the name is valid or invalid (true/false)</returns>
+		static bool IsValidFilename(string filename)
+		{
+			char[] invalidChars = Path.GetInvalidFileNameChars();
+
+			return !filename.Any(c => invalidChars.Contains(c));
+		}
+
+		/// <summary>
+		/// Runs the process of creating and seralizing data.
+		/// </summary>
+		/// <param name="format">Choosen format for the data</param>
 		public static void Run(string format)
 		{
 			string fileName = ChooseFormatAndFileName(format);
@@ -32,21 +70,10 @@ namespace Datadrasil
 			Console.ReadLine();
 		}
 
-		static string[] ListFiles()
-		{
-			string directory = Directory.GetCurrentDirectory();
-
-			string[] files = Directory.GetFiles(directory);
-
-			string[] filteredFiles = files
-				.Where(file => file.EndsWith(".xml", StringComparison.OrdinalIgnoreCase) ||
-							   file.EndsWith(".yaml", StringComparison.OrdinalIgnoreCase) ||
-							   file.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
-				.ToArray();
-
-			return filteredFiles;
-		}
-
+		/// <summary>
+		/// Creates a list of datarepresentations based on user input.
+		/// </summary>
+		/// <returns>The list of data representations</returns>
 		private static List<DataRepresentation> CreateData()
 		{
 			List<DataRepresentation> data = new List<DataRepresentation>();
@@ -76,7 +103,7 @@ namespace Datadrasil
 					}
 
 					DataItem Dataitem = new DataItem();
-					DataItem item = new DataItem { PropertySetName = itemName };
+					DataItem item = new DataItem { ItemName = itemName };
 
                     while (true)
 					{
@@ -103,7 +130,12 @@ namespace Datadrasil
 
 			return data;
 		}
-		private static void DisplayData(List<DataRepresentation> data)
+
+		/// <summary>
+		/// Displays the created data to the console.
+		/// </summary>
+		/// <param name="data">The list of datarepresentations to display</param>
+		public static void DisplayData(List<DataRepresentation> data)
 		{
 			string output = "";
 
@@ -115,7 +147,7 @@ namespace Datadrasil
 
 					foreach (DataItem item in category.Items)
 					{
-						output += $"{tab}{item.PropertySetName}: \n";
+						output += $"{tab}{item.ItemName}: \n";
 
 						foreach (KeyValue property in item.Properties)
 						{

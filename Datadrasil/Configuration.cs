@@ -5,7 +5,8 @@ using System.Linq;
 namespace Datadrasil
 {
     /// <summary>
-    /// Represents the configuration interpreter for sorting data.
+    /// Not implemented.
+	/// Represents the configuration interpreter for sorting data.
     /// </summary>
     public class Configuration
 	{
@@ -23,45 +24,29 @@ namespace Datadrasil
 		}
 
 		/// <summary>
-		/// Interprets the configuration file for sorting data.
+		/// Retrives the sorting key from user input.
 		/// </summary>
-		/// <param name="configurationFilePath">The path to the configuration file.</param>
-		public void ParseConfiguration(string configurationFilePath)
-		{
-			try
-			{
-				string sortingKey = GetSortingKey();
-				bool isNumericKey = IsNumericKey(sortingKey);
-				bool ascendingOrder = GetSortOrder();
-
-				dataSorter.SortData(sortingKey, isNumericKey, ascendingOrder);
-
-				Console.WriteLine("Sorting process completed successfully!");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Error during configuration interpretation: {ex.Message}");
-			}
-		}
-
-		public static void ConfigureOptions(bool isAscending)
-		{
-			if (isAscending)
-			{
-                Console.WriteLine("Ascending");
-            }
-        }
+		/// <returns></returns>
 		private string GetSortingKey()
 		{
-			Console.WriteLine("Enter the key for sorting:");
+			Console.WriteLine("Enter the value for sorting:");
 			return Console.ReadLine();
 		}
 
-		private bool IsNumericKey(string key)
+		/// <summary>
+		/// Determines whether the provided value is numeric.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		private bool IsNumericValue(string value)
 		{
-			return double.TryParse(key, out _);
+			return double.TryParse(value, out _);
 		}
 
+		/// <summary>
+		/// Retrives the sorting order from user input.
+		/// </summary>
+		/// <returns>True for ascending, false for descending order</returns>
 		private bool GetSortOrder()
 		{
 			Console.WriteLine("Enter 'asc' for ascending order or 'desc' for descending order:");

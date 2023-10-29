@@ -14,7 +14,7 @@ namespace Datadrasil
 		{
 			string jsonContent = File.ReadAllText(filePath);
 
-			List<T>? parsedData = JsonConvert.DeserializeObject<List<T>>(jsonContent);
+			List<T> parsedData = JsonConvert.DeserializeObject<List<T>>(jsonContent);
 			return parsedData ?? new List<T>();
 		}
 

@@ -6,15 +6,29 @@ using System.Threading.Tasks;
 
 namespace Datadrasil
 {
+	/// <summary>
+	/// Class responsible for sorting data within a DataRepresentation.
+	/// </summary>
 	public class DataSorter
 	{
 		private DataRepresentation dataRepresentation;
 
-		public DataSorter(DataRepresentation data)
+		/// <summary>
+		/// Initalizes a new instance of the DataSorter class.
+		/// </summary>
+		/// <param name="initData">The data to be sorted</param>
+		public DataSorter(DataRepresentation initData)
 		{
-			dataRepresentation = data;
+			dataRepresentation = initData;
 		}
 
+		/// <summary>
+		/// Sorts the data within the DataRepresentation based on the options.
+		/// </summary>
+		/// <param name="sortingKey">Flag for to check which key the methods should sort</param>
+		/// <param name="isNumericKey">Flag for if the the value of the key is numeric</param>
+		/// <param name="isAscending">Flag for ascending or descending sorting order</param>
+		/// <returns></returns>
 		public DataRepresentation SortData(string sortingKey, bool isNumericKey, bool isAscending)
 		{
 			DataRepresentation sortedDataRepresentation = new DataRepresentation();
@@ -36,7 +50,7 @@ namespace Datadrasil
 						: category.Items.OrderByDescending(item => item.Properties.FirstOrDefault(kvp => kvp.Name == sortingKey)?.Value?.ToString()).ToList();
 				}
 
-				// Add the sorted items to the new DataRepresentation instance
+				// add sorted items to the new DataRepresentation instance
 				sortedDataRepresentation.Categories.Add(new DataCategory { CategoryName = category.CategoryName, Items = sortedItems });
 			}
 

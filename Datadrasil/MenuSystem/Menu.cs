@@ -6,22 +6,33 @@ using System.Threading.Tasks;
 
 namespace Datadrasil
 {
+    /// <summary>
+    /// The menu class which creates the menu system.
+    /// Through the hierarchical menu components.
+    /// </summary>
     public class Menu : MenuComponent
     {
         private readonly Stack<List<MenuComponent>> menuStack;
         private List<MenuComponent> currentMenu;
 
+        // List of the main menu
         List<MenuComponent> MainMenu = MainMenus.Main();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="customMenu"></param>
         public Menu(IEnumerable<MenuComponent> customMenu = null)
         {
             currentMenu = customMenu?.ToList() ?? MainMenu;
             menuStack = new Stack<List<MenuComponent>>();
         }
-
+        /// <summary>
+        /// Executes the menu system, allowing navigations between menu components.
+        /// This allows for a less verbose console interface.
+        /// </summary>
         public override void Execute()
         {
-            Console.WriteLine(); // To create some space, options starts to appear from the second row.
             while (true)
             {
                 ShowMenu();
@@ -59,6 +70,9 @@ namespace Datadrasil
             }
         }
 
+        /// <summary>
+        /// Displays the current menu options to standard output.
+        /// </summary>
         private void ShowMenu()
         {
             for (int i = 0; i < currentMenu.Count; i++)
