@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Serialization;
-
-namespace Datadrasil
+﻿namespace Datadrasil
 {
 	/// <summary>
 	/// Class responsible for creating and seralizing data representations.

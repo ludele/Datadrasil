@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace Datadrasil
+﻿namespace Datadrasil
 {
 	/// <summary>
 	/// Manages format handlers for reading and writing data of type T from/to files.

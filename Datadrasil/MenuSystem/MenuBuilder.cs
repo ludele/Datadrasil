@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Datadrasil
 {
-    /// <summary>
-    /// Builder class to create menus.
-    /// </summary>
-    public class MenuBuilder
+	/// <summary>
+	/// Builder class to create menus.
+	/// </summary>
+	public class MenuBuilder
     {
         private string displayText { get; set; }
         private Action action;
-        private List<MenuComponent> option; 
-    
+        private List<MenuComponent> option;
+
         /// <summary>
         /// Constuctor to set the display text.
         /// </summary>
         /// <param name="initDisplayText">Optional initialation of the display text</param>
         public MenuBuilder(string initDisplayText = null)
         {
-            displayText = initDisplayText;   
+            displayText = initDisplayText;
         }
 
         /// <summary>

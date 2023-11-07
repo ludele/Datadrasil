@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Datadrasil
+﻿namespace Datadrasil
 {
-    /// <summary>
-    /// The menu class which creates the menu system.
-    /// Through the hierarchical menu components.
-    /// </summary>
-    public class Menu : MenuComponent
+	/// <summary>
+	/// The menu class which creates the menu system.
+	/// Through the hierarchical menu components.
+	/// </summary>
+	public class Menu : MenuComponent
     {
         private readonly Stack<List<MenuComponent>> menuStack;
         private List<MenuComponent> currentMenu;
@@ -18,11 +12,11 @@ namespace Datadrasil
         // List of the main menu
         List<MenuComponent> MainMenu = MainMenus.Main();
 
-		/// <summary>
-		/// Initalizes a new instance of the menu class
-		/// </summary>
-		/// <param name="customMenu">An optional parameter allowing the initialization of the menu with a custom set of menu components.</param>
-		public Menu(IEnumerable<MenuComponent> customMenu = null)
+        /// <summary>
+        /// Initalizes a new instance of the menu class
+        /// </summary>
+        /// <param name="customMenu">An optional parameter allowing the initialization of the menu with a custom set of menu components.</param>
+        public Menu(IEnumerable<MenuComponent> customMenu = null)
         {
             currentMenu = customMenu?.ToList() ?? MainMenu;
             menuStack = new Stack<List<MenuComponent>>();
@@ -34,7 +28,7 @@ namespace Datadrasil
         public override void Execute()
         {
             while (true)
-            {      
+            {
                 ShowMenu();
                 string userInput = Console.ReadLine();
 
@@ -46,15 +40,15 @@ namespace Datadrasil
                     if (selectedMenuComponent is MenuItem menuItem && menuItem.HasSubMenu)
                     {
                         menuStack.Push(currentMenu);
-						DisplayText = menuItem.GetSubMenu().FirstOrDefault()?.DisplayText ?? "Main MainMenus";
-					}
+                        DisplayText = menuItem.GetSubMenu().FirstOrDefault()?.DisplayText ?? "Main MainMenus";
+                    }
                     else
                     {
                         if (menuStack.Count > 0)
                         {
                             currentMenu = menuStack.Pop();
-							DisplayText = currentMenu.LastOrDefault()?.DisplayText ?? "Main MainMenus";
-						}
+                            DisplayText = currentMenu.LastOrDefault()?.DisplayText ?? "Main MainMenus";
+                        }
                         else
                         {
                             currentMenu = MainMenu;

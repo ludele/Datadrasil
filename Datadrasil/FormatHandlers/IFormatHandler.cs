@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Datadrasil
+﻿namespace Datadrasil
 {
 	/// <summary>
 	/// Interface to set a reference for the format handlers,

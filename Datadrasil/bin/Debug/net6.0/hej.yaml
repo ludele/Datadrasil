@@ -1,0 +1,11 @@
+- Categories:
+  - CategoryName: Hej
+    Items:
+    - ItemName: abcdef
+      Properties:
+      - Name: ada
+        Value: dada
+      - Name: dada
+        Value: dad
+      - Name: ad
+        Value: aq

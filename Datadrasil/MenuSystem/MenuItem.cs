@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Datadrasil
+﻿namespace Datadrasil
 {
-    /// <summary>
-    /// Represents a menu item in a menu system.
-    /// </summary>
-    public class MenuItem : MenuComponent
+	/// <summary>
+	/// Represents a menu item in a menu system.
+	/// </summary>
+	public class MenuItem : MenuComponent
     {
         private readonly Action action;
         private readonly List<MenuComponent> subMenu;
@@ -29,7 +23,7 @@ namespace Datadrasil
         {
             DisplayText = initDisplayText;
             action = initAction ?? (() => Console.Clear());
-            this.subMenu = initSubMenu ?? new List<MenuComponent>();
+            subMenu = initSubMenu ?? new List<MenuComponent>();
         }
 
         /// <summary>

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Datadrasil
+﻿namespace Datadrasil
 {
-    /// <summary>
-    /// The next highest structure that holds the other smaller structures inside a category.
-    /// </summary>
-    public class DataCategory
+	/// <summary>
+	/// The next highest structure that holds the other smaller structures inside a category.
+	/// </summary>
+	public class DataCategory
     {
         /// <summary>
         /// The name of the category

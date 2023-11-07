@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Datadrasil
+﻿namespace Datadrasil
 {
-    /// <summary>
-    /// Not implemented.
+	/// <summary>
+	/// Not implemented.
 	/// Represents the configuration interpreter for sorting data.
-    /// </summary>
-    public class Configuration
+	/// </summary>
+	public class Configuration
 	{
 		private readonly FormatHandlerManager<DataRepresentation> formatHandler;
 

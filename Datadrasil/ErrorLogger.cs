@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Datadrasil
+﻿namespace Datadrasil
 {
 	/// <summary>
 	/// Class containing the LogError method for logging errors when a exception is thrown.

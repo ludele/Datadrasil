@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Datadrasil
 {
@@ -19,11 +16,9 @@ namespace Datadrasil
 			}
 			try
 			{
-				using (FileStream stream = new FileStream(filePath, FileMode.Open))
-				{
-					XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
-					return (List<T>)serializer.Deserialize(stream);
-				}
+				using FileStream stream = new(filePath, FileMode.Open);
+				XmlSerializer serializer = new(typeof(List<T>));
+				return (List<T>)serializer.Deserialize(stream);
 			}
 			catch (Exception ex)
 			{
